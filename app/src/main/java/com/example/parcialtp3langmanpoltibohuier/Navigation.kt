@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Home.HomeRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyAccount.MyAccountRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.myAccountRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyCard.MyCardRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.ServicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
@@ -31,7 +31,7 @@ fun Navigation(navController: NavHostController){
             HomeRoute(navController)
         }
         composable(AppRoutes.MY_ACCOUNT){
-            MyAccountRoute(navController)
+            myAccountRoute(navController)
         }
         composable(AppRoutes.MY_CARD){
             MyCardRoute(navController)
