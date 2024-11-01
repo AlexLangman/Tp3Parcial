@@ -11,6 +11,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
@@ -22,17 +25,23 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple1
 fun iconTabBar(icon: ImageVector, label: String, isSelected: Boolean, onClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .clickable(onClick = onClick) // Hace que todo el área del Box sea clickeable
-            .then(
-                if (isSelected) Modifier.border(BorderStroke(2.dp, Green2), shape = RectangleShape)
-                else Modifier
-            )
-            .padding(top = 4.dp)
+            .clickable(onClick = onClick)
+            .padding(10.dp)
+            .drawBehind {
+                if (isSelected) {
+                    drawRect(
+                        color = Green2,
+                        topLeft = Offset(0f, 0f),
+                        size = Size(size.width, 2f)
+                    )
+                }
+            }
     ) {
         Icon(
             imageVector = icon,
             contentDescription = label,
             tint = if (isSelected) Green2 else Purple1,
+            modifier = Modifier.size(24.dp)
         )
     }
 }
