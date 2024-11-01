@@ -2,7 +2,7 @@ package com.example.parcialtp3langmanpoltibohuier.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val White = Color(0xFF0FD08B)
+val White = Color(0xFFFFFFFF)
 
 val Gray1 = Color(0xFF575372)
 val Gray2 = Color(0xFFD1D1D7)
