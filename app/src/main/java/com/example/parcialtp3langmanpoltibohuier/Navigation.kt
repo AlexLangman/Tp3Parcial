@@ -1,6 +1,8 @@
 package com.example.parcialtp3langmanpoltibohuier
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
@@ -13,14 +15,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.Home.HomeRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyAccount.MyAccountRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyCard.MyCardRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.ServicePayment.ServicePaymentRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.myAccountRoute
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable()
 fun Navigation(navController: NavHostController) {
@@ -53,7 +56,7 @@ fun Navigation(navController: NavHostController) {
                 HomeRoute(navController)
             }
             composable(AppRoutes.MY_ACCOUNT) {
-                MyAccountRoute(navController)
+                myAccountRoute(navController)
             }
             composable(AppRoutes.MY_CARD) {
                 MyCardRoute(navController)
