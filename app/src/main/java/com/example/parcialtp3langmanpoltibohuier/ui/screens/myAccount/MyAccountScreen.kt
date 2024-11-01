@@ -20,14 +20,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.parcialtp3langmanpoltibohuier.dataClasses.Payment
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.myAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.transactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.samples.sampleTransactions
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyAccount.MyAccountViewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 import java.time.LocalDate
@@ -48,7 +45,7 @@ enum class TransactionsType {
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun myAccountScreen() {
-    //val viewModel: myAccountViewModel = viewModel()
+    val viewModel: MyAccountViewModel = viewModel()
     //val payments: MutableLiveData<List<Payment>> = viewModel.payments
     val SUBTITLE = "MOVIMIENTOS"
 
