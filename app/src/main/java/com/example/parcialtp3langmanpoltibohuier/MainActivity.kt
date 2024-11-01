@@ -1,5 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.ParcialTP3LangmanPoltiBohuierTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,7 +30,7 @@ class MainActivity : ComponentActivity() {
 
             ParcialTP3LangmanPoltiBohuierTheme {
                 Scaffold (
-                    content = { Navigation(paddingValues = it,navController = navController)}
+                    content = { Navigation(navController = navController) }
                 )
             }
         }
