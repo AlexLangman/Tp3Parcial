@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObject
 
 class MyAccountViewModel: ViewModel() {
-    private val _payments = MutableLiveData<List<Payment>>()
+    public val payments = MutableLiveData<List<Payment>>()
     private val firebaseFirestore = FirebaseFirestore.getInstance()
     private val paymentsCollection = firebaseFirestore.collection("payments")
 
@@ -21,7 +21,7 @@ class MyAccountViewModel: ViewModel() {
                 }
 
                 if (paymentsList.isNotEmpty()){
-                    _payments.value = paymentsList
+                    payments.value = paymentsList
                 }
             }
         }
