@@ -1,4 +1,4 @@
-package com.example.parcialtp3langmanpoltibohuier.ui.screens.MyAccount
+package com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
