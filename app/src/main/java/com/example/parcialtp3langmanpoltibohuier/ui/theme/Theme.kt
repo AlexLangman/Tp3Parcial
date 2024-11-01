@@ -9,7 +9,15 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+
+private val Purple80 = Color(0xFFBB86FC)
+private val PurpleGrey80 = Color(0xFF6200EE)
+private val Pink80 = Color(0xFF03DAC5)
+private val Purple40 = Color(0xFF3700B3)
+private val PurpleGrey40 = Color(0xFF03DAC6)
+private val Pink40 = Color(0xFF018786)
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
