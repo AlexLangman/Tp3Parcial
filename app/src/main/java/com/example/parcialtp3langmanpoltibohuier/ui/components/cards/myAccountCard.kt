@@ -59,13 +59,22 @@ fun myAccountCard(modifier: Modifier) {
                     .padding(top = SEPARATION_SIZE * 2),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Text(text = "CVU: ")
+                Text(
+                    text = "CVU: ",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal
+                )
                 Text(
                     modifier = Modifier
                         .padding(start = SEPARATION_SIZE, end = SEPARATION_SIZE * 2),
-                    text = "0000654326538129540653", fontWeight = FontWeight.Bold
+                    text = "0000654326538129540653",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
                 )
-                Text(text = "Copiar", fontWeight = FontWeight.Bold, color = Purple1)
+                Text(text = "Copiar",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Purple1)
             }
         }
     }
