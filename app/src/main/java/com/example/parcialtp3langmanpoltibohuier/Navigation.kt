@@ -1,15 +1,14 @@
 package com.example.parcialtp3langmanpoltibohuier
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.Home.HomeRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyAccount.MyAccountRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.MyCard.MyCardRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.ServicePayment.ServicePaymentRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
 
