@@ -4,4 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun MyCardScreen(navController: NavHostController){}
+fun MyCardScreen(navController: NavHostController){
+
+}
