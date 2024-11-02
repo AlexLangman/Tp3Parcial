@@ -53,20 +53,22 @@ fun MyCardScreen(navController: NavHostController){
     var EXPIRATION_DATE_DEFAULT = "**/**"
     var EXPIRATION_DATE = "05/23"
 
-    data class ButtonInfo(var title: String, var description: String, var icon: ImageVector, var buttonColor: Color)
+    data class ButtonInfo(var title: String, var description: String, var icon: ImageVector, var buttonColor: Color, var isFirst: Boolean = false, var isLast: Boolean = false)
 
     val buttonsInfo = listOf(
         ButtonInfo(
             title = "Quiero mi tarjeta fisica",
             description = "",
             icon = Icons.Filled.ArrowForward,
-            buttonColor = Green800
+            buttonColor = Green800,
+            isFirst = true
         ),
         ButtonInfo(
             title = "Ya tengo mi tarjeta fisica",
             description = "Activa tu tarjeta para comenzar a usarla",
             icon = Icons.Filled.ArrowForward,
-            buttonColor = Green800),
+            buttonColor = Green800,
+            isLast = true)
     )
 
     val modId = "modIcon"
@@ -184,7 +186,9 @@ fun MyCardScreen(navController: NavHostController){
                                 text = it.title,
                                 description = it.description,
                                 icon = it.icon,
-                                iconBackgrounColor = it.buttonColor)
+                                iconBackgrounColor = it.buttonColor,
+                                isLast = it.isLast,
+                                isFirst = it.isFirst)
                         }
                     }
                 }

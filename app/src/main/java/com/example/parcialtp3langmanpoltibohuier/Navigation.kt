@@ -25,6 +25,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.Servi
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -73,6 +74,9 @@ fun Navigation(navController: NavHostController) {
             }
             composable(AppRoutes.SERVICE_PAYMENT) {
                 ServicePaymentRoute(navController)
+            }
+            composable(AppRoutes.MY_PROFILE) {
+                MyProfileRoutes(navController)
             }
         }
     }
