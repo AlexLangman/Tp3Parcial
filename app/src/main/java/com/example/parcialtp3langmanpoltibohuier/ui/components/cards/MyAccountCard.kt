@@ -17,11 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple1
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
-fun myAccountCard(modifier: Modifier) {
+fun MyAccountCard(modifier: Modifier) {
     val SEPARATION_SIZE = 8.dp
 
     Card(
@@ -74,7 +74,7 @@ fun myAccountCard(modifier: Modifier) {
                 Text(text = "Copiar",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Purple1)
+                    color = Purple900)
             }
         }
     }
@@ -83,6 +83,6 @@ fun myAccountCard(modifier: Modifier) {
 
 @Preview
 @Composable
-fun myAccountCardPreview() {
-    myAccountCard(modifier = Modifier)
+fun MyAccountCardPreview() {
+    MyAccountCard(modifier = Modifier)
 }

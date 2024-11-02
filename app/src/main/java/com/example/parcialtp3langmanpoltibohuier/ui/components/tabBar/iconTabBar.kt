@@ -26,8 +26,8 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green2
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple1
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
 
 
 @Composable

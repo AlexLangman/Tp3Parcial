@@ -23,9 +23,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.myAccountCard
-import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.transactionCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
@@ -35,7 +36,7 @@ import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun myAccountScreen() {
+fun MyAccountScreen() {
     val viewModel: MyAccountViewModel = viewModel()
     val payments by viewModel.payments.observeAsState(emptyList())
     val SUBTITLE = "MOVIMIENTOS"
@@ -53,7 +54,7 @@ fun myAccountScreen() {
         Spacer(modifier = Modifier.height(50.dp))
 
         // Card info de cuenta
-        myAccountCard(modifier = Modifier.fillMaxWidth())
+        MyAccountCard(modifier = Modifier.fillMaxWidth())
 
         Spacer(modifier = Modifier.height(150.dp))
 
@@ -78,7 +79,7 @@ fun myAccountScreen() {
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 val transacctions: List<Transaction> = payments!![0].transactions.credit_card_transactions + payments!![0].transactions.bank_account_transactions
                 items(transacctions) { item ->
-                    transactionCard(item)
+                    TransactionCard(item)
                     horizontalDivider()
                 }
             }
@@ -92,6 +93,6 @@ fun myAccountScreen() {
 @Preview(showBackground = true)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun myAccountScreenPreview() {
-    myAccountScreen()
+fun MyAccountScreenPreview() {
+    MyAccountScreen()
 }

@@ -22,8 +22,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray1
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple1
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
@@ -39,7 +39,7 @@ fun arrowButton(
             .background(White)
             .border(
                 width = 1.dp, // Ancho del borde
-                color = Color.Gray, // Color del borde
+                color = Color.Gray, // Color del borde. TODO: Definir color
                 shape = RoundedCornerShape(5.dp) // Borde redondeado
             )
             .padding(5.dp),
@@ -49,13 +49,13 @@ fun arrowButton(
         Column {
             Text(
                 text = text,
-                color = Purple1, // Cambia el color de la letra a negro
+                color = Purple900, // Cambia el color de la letra a negro
                 fontWeight = FontWeight.Bold // Cambia la letra a negrita
             )
             description?.let {
                 Text(
                     text = it, // Debe ser un String
-                    color = Gray1, // Debe ser un Color
+                    color = Gray900, // Debe ser un Color
                     fontSize = 10.sp, // Debe ser un TextUnit, que generalmente se especifica como sp
                 )
             }

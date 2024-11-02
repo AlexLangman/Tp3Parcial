@@ -40,7 +40,7 @@ fun HomeScreen(navController: NavHostController) {
         Text(
             text = "Último acceso: Mar 01, 2020 4:55 PM",
             style = MaterialTheme.typography.bodySmall,
-            color = Color.Gray,
+            color = Color.Gray, // TODO: change color
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -59,7 +59,7 @@ fun HomeScreen(navController: NavHostController) {
         Text(
             text = "SALDO DISPONIBLE",
             style = MaterialTheme.typography.labelMedium,
-            color = Color.Gray
+            color = Color.Gray // TODO: change color
         )
 
         Text(

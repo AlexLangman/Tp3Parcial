@@ -23,12 +23,12 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.myAccountRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountRoute
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable()
+@Composable
 fun Navigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: AppRoutes.HOME
@@ -63,7 +63,7 @@ fun Navigation(navController: NavHostController) {
                 HomeRoute(navController)
             }
             composable(AppRoutes.MY_ACCOUNT) {
-                myAccountRoute(navController)
+                MyAccountRoute(navController)
             }
             composable(AppRoutes.MY_CARD) {
                 MyCardRoute(navController)

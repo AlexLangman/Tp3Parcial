@@ -7,8 +7,8 @@ import androidx.navigation.NavHostController
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun myAccountRoute(
+fun MyAccountRoute(
     navController: NavHostController
 ){
-    myAccountScreen()
+    MyAccountScreen()
 }
