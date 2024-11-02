@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -44,17 +45,19 @@ fun iconTabBar(
             .clickable(onClick = onClick)
             .padding(horizontal = 16.dp)
     ) {
+
+
+
+
         Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
-                .height(2.dp)
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Image(
-            painter = if (isSelected) iconSelected() else icon(),
-            contentDescription = label,
-            modifier = Modifier.size(24.dp),
-        )
+        ) {
+            Image(
+                painter = if (isSelected) iconSelected() else icon(),
+                contentDescription = label,
+                modifier = Modifier.size(24.dp)
+            )
+        }
     }
 }
