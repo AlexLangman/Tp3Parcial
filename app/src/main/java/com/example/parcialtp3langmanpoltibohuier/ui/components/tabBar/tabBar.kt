@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.NavItem
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green2
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 
 
 @Composable

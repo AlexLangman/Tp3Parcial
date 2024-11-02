@@ -22,8 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.navigation.NavHostController
 import androidx.compose.ui.graphics.Color
-import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green2
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -35,9 +33,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.arrowButton
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray1
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple1
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow1
+import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow900
 
 @Composable
 fun MyCardScreen(navController: NavHostController){
@@ -56,8 +56,17 @@ fun MyCardScreen(navController: NavHostController){
     data class ButtonInfo(var title: String, var description: String, var icon: ImageVector, var buttonColor: Color)
 
     val buttonsInfo = listOf(
-        ButtonInfo(title = "Quiero mi tarjeta fisica", description = "", icon = Icons.Filled.ArrowForward ,buttonColor = Green2),
-        ButtonInfo(title = "Ya tengo mi tarjeta fisica", description = "Activa tu tarjeta para comenzar a usarla", icon = Icons.Filled.ArrowForward ,  buttonColor = Green2),
+        ButtonInfo(
+            title = "Quiero mi tarjeta fisica",
+            description = "",
+            icon = Icons.Filled.ArrowForward,
+            buttonColor = Green800
+        ),
+        ButtonInfo(
+            title = "Ya tengo mi tarjeta fisica",
+            description = "Activa tu tarjeta para comenzar a usarla",
+            icon = Icons.Filled.ArrowForward,
+            buttonColor = Green800),
     )
 
     val modId = "modIcon"
@@ -75,7 +84,7 @@ fun MyCardScreen(navController: NavHostController){
                     placeholderVerticalAlign = PlaceholderVerticalAlign.Center
                 )
             ) {
-                Icon(Icons.Filled.Lightbulb, contentDescription = null, tint = Yellow1, modifier = Modifier.fillMaxSize())
+                Icon(Icons.Filled.Lightbulb, contentDescription = null, tint = Yellow900, modifier = Modifier.fillMaxSize())
             }
         )
     )
@@ -96,7 +105,7 @@ fun MyCardScreen(navController: NavHostController){
             Column {
                 Text(
                     text = TEXT1,
-                    color = Gray1,
+                    color = Gray900,
                     modifier = Modifier
                         .fillMaxWidth() // Ocupa todo el ancho disponible
                         .padding(start = 18.dp)
@@ -115,11 +124,11 @@ fun MyCardScreen(navController: NavHostController){
                     Icon(
                         imageVector = Icons.Filled.Visibility,
                         contentDescription = "Visibility Icon",
-                        tint = Purple1
+                        tint = Purple900
                     )
                     Text(
                         text = SHOW_INFO_TEXT,
-                        color = Purple1,
+                        color = Purple900,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(start = 5.dp)
                     )
@@ -133,7 +142,7 @@ fun MyCardScreen(navController: NavHostController){
                 .padding(vertical = 10.dp)
                 .drawBehind {
                     drawLine(
-                        color = Gray1, // Cambia el color del subrayado
+                        color = Gray900, // Cambia el color del subrayado
                         start = Offset(0f, size.height), // Comienza en la parte inferior izquierda
                         end = Offset(
                             size.width,
@@ -148,14 +157,14 @@ fun MyCardScreen(navController: NavHostController){
                 Text(
                     text = FINAL_INFO,
                     inlineContent = inlineContent,
-                    color = Gray1,
+                    color = Gray900,
                     modifier = Modifier
                         .fillMaxWidth() // Ocupa todo el ancho disponible
                         .padding(start = 18.dp, end = 18.dp)
                 )
                 Text(
                     text = TEXT2,
-                    color = Gray1,
+                    color = Gray900,
                     modifier = Modifier
                         .fillMaxWidth() // Ocupa todo el ancho disponible
                         .padding(start = 18.dp)
