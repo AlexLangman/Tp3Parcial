@@ -3,12 +3,11 @@ package com.example.parcialtp3langmanpoltibohuier
 import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.BottomAppBar
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,31 +20,35 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.Servi
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.myAccountRoute
+import androidx.compose.foundation.layout.WindowInsets
+
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable()
+@Composable
 fun Navigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: AppRoutes.HOME
 
-
     Scaffold(
-
         topBar = {
+            // Aquí puedes agregar tu barra superior si es necesario.
         },
         bottomBar = {
-            if(currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN ){
-                tabBar(navController = navController, currentRoute = currentRoute )
+            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN) {
+                tabBar(navController = navController, currentRoute = currentRoute)
             }
-        }
-    ) {
+        },
+        modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars) // Esto es clave
+    ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = AppRoutes.HOME
-        )
-        {
+            startDestination = AppRoutes.HOME,
+            Modifier
+                .fillMaxSize()
+                .padding(innerPadding) // Aplica el padding interno
+        ) {
             composable(AppRoutes.SPLASH) {
                 SplashRoute(navController)
             }
