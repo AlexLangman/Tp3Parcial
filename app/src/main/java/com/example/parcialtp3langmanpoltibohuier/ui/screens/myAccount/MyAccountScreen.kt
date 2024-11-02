@@ -20,7 +20,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.parcialtp3langmanpoltibohuier.dataClasses.Payment
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.myAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.transactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
@@ -46,10 +48,10 @@ enum class TransactionsType {
 @Composable
 fun myAccountScreen() {
     val viewModel: MyAccountViewModel = viewModel()
-    //val payments: MutableLiveData<List<Payment>> = viewModel.payments
+    val payments: MutableLiveData<List<Payment>> = viewModel.payments
     val SUBTITLE = "MOVIMIENTOS"
 
-    //viewModel.fetchPayments()
+    viewModel.fetchPayments()
 
     Column(
         modifier = Modifier.fillMaxSize(),
