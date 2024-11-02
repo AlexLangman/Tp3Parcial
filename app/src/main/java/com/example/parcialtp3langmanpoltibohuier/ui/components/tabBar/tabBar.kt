@@ -60,7 +60,7 @@ fun tabBar(navController: NavHostController, currentRoute: String) {
                     modifier = Modifier
                         .width(60.dp)
                         .height(4.dp)
-                        .background(if (currentRoute == item.route) Green2 else Color.Transparent),
+                        .background(if (currentRoute == item.route) Green800 else Color.Transparent),
                     contentAlignment = Alignment.Center
                 ) {}
                 Spacer(modifier = Modifier.height(10.dp))
