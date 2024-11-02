@@ -61,7 +61,7 @@ fun ParcialTP3LangmanPoltiBohuierTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = CustomTypography,
         content = content
     )
 }
