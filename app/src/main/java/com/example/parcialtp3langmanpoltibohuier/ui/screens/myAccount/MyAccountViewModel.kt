@@ -1,4 +1,4 @@
-package com.example.parcialtp3langmanpoltibohuier.ui.screens.MyAccount
+package com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObject
 
 class MyAccountViewModel: ViewModel() {
-    private val _payments = MutableLiveData<List<Payment>>()
+    public val payments = MutableLiveData<List<Payment>>()
     private val firebaseFirestore = FirebaseFirestore.getInstance()
     private val paymentsCollection = firebaseFirestore.collection("payments")
 
@@ -16,12 +16,13 @@ class MyAccountViewModel: ViewModel() {
             if (task.isSuccessful) {
                 val paymentsList = ArrayList<Payment>()
                 for (item in task.result){
-                    val pay = item.toObject(Payment::class.java)
-                    paymentsList.add(pay)
+                    // TODO: DATA: STRING TO OBJECT
+                    // val pay = item.toObject(Payment::class.java)
+                    // paymentsList.add(pay)
                 }
 
                 if (paymentsList.isNotEmpty()){
-                    _payments.value = paymentsList
+                    payments.value = paymentsList
                 }
             }
         }

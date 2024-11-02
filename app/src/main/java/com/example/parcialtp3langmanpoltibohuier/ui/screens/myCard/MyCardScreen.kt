@@ -1,4 +1,4 @@
-package com.example.parcialtp3langmanpoltibohuier.ui.screens.MyCard
+package com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

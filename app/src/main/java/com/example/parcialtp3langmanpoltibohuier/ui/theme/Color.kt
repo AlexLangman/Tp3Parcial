@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 // TODO: Nombres de colores deben ser iguales a los del Figma
 val Black = Color(0xFF241846)
-val White = Color(0xFF0FD08B) // TODO: Esto no es blanco
+val White = Color(0xFFFFFFFF)
 
 val Gray1 = Color(0xFF575372)
 val Gray2 = Color(0xFFD1D1D7)
