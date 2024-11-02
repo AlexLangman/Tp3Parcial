@@ -19,10 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.R
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red1
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow1
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow2
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow3
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow800
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow100
 
 @Composable
 fun CardContent(
@@ -77,13 +77,13 @@ fun CardContent(
             Box(
                 modifier = Modifier
                     .size(25.dp)
-                    .background(Yellow1.copy(alpha = 0.85f), shape = CircleShape)
+                    .background(Yellow900.copy(alpha = 0.85f), shape = CircleShape)
             )
             Box(
                 modifier = Modifier
                     .size(25.dp)
                     .offset(x = (-16).dp) // Desplaza el segundo círculo hacia la izquierda para superponerlo
-                    .background(Red1.copy(alpha = 0.85f), shape = CircleShape) // Amarillo
+                    .background(Red900.copy(alpha = 0.85f), shape = CircleShape) // Amarillo
             )
         }
     }

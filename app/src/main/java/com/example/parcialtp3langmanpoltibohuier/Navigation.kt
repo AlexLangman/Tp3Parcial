@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
+import com.example.parcialtp3langmanpoltibohuier.ui.components.topBar.topBarCustom
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
@@ -36,7 +37,9 @@ fun Navigation(navController: NavHostController) {
 
     Scaffold(
         topBar = {
-
+            if(currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN){
+                topBarCustom(currentRoute)
+            }
         },
         bottomBar = {
             if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN) {
