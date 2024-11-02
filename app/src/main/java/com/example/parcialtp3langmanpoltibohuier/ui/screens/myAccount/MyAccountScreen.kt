@@ -1,6 +1,7 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,44 +15,36 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.parcialtp3langmanpoltibohuier.dataClasses.Payment
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.myAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.transactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
-import com.example.parcialtp3langmanpoltibohuier.ui.components.samples.sampleTransactions
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
-import java.time.LocalDate
+import androidx.compose.runtime.livedata.observeAsState
+import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 
-data class Transaction(
-    val date: LocalDate,
-    val type: TransactionsType,
-    val aut: Int,
-    val value : Double,
-)
-
-enum class TransactionsType {
-    TRANSFERENCIA,
-    PAGO_DE_SERVICIO,
-    RECARGA_SUBE
-}
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun myAccountScreen() {
     val viewModel: MyAccountViewModel = viewModel()
-    val payments: MutableLiveData<List<Payment>> = viewModel.payments
+    val payments by viewModel.payments.observeAsState(emptyList())
     val SUBTITLE = "MOVIMIENTOS"
+    val LOADING = "Loading transactions..."
 
-    viewModel.fetchPayments()
+    // Llama a fetchPayments() una vez cuando el Composable se lanza
+    LaunchedEffect(Unit) {
+        viewModel.fetchPayments()
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -80,14 +73,19 @@ fun myAccountScreen() {
             )
         }
 
-        // Listado de movimientos
-        LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            items(sampleTransactions) { item ->
-                transactionCard(item)
-                horizontalDivider()
+        if (payments != null && payments!!.isNotEmpty()){
+            // Listado de movimientos
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                val transacctions: List<Transaction> = payments!![0].transactions.credit_card_transactions + payments!![0].transactions.bank_account_transactions
+                items(transacctions) { item ->
+                    transactionCard(item)
+                    horizontalDivider()
+                }
             }
         }
-
+        else {
+            Text(text = LOADING)
+        }
     }
 }
 
