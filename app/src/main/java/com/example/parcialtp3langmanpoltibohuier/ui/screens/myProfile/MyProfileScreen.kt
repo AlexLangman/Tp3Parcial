@@ -14,6 +14,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,14 +23,21 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.R
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.arrowButton
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountViewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 
 @Composable
 fun MyProfileScreen(navController: NavHostController){
+    val viewModel: MyProfileViewModel = viewModel()
+    val isLoading by viewModel.loading.collectAsState()
+    val userInfo by viewModel.userInfo.collectAsState()
+    viewModel.getUserById(1) //Traemos la info del usuario 1
+
     LazyColumn (
         modifier = Modifier
             .padding(16.dp),
@@ -97,9 +106,15 @@ fun MyProfileScreen(navController: NavHostController){
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    "\uD83D\uDC4B Hola Mariana Belén",
-                )
+                if (!isLoading && userInfo != null) {
+                    Text(
+                        "\uD83D\uDC4B Hola " +
+                                userInfo!!.name.firstname + " " +
+                                userInfo!!.name.lastname
+                    )
+                } else {
+                    Text(text = "Cargando nombre...")
+                }
             }
 
 
