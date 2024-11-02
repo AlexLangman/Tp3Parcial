@@ -16,8 +16,9 @@ class MyAccountViewModel: ViewModel() {
             if (task.isSuccessful) {
                 val paymentsList = ArrayList<Payment>()
                 for (item in task.result){
-                    val pay = item.toObject(Payment::class.java)
-                    paymentsList.add(pay)
+                    // TODO: DATA: STRING TO OBJECT
+                    // val pay = item.toObject(Payment::class.java)
+                    // paymentsList.add(pay)
                 }
 
                 if (paymentsList.isNotEmpty()){
