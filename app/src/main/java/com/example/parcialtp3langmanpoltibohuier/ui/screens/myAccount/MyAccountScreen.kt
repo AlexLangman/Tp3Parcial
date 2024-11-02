@@ -1,6 +1,7 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
