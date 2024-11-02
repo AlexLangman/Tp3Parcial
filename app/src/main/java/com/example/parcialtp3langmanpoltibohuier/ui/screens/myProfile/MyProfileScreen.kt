@@ -1,5 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -14,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -36,7 +38,10 @@ fun MyProfileScreen(navController: NavHostController){
     val viewModel: MyProfileViewModel = viewModel()
     val isLoading by viewModel.loading.collectAsState()
     val userInfo by viewModel.userInfo.collectAsState()
-    viewModel.getUserById(1) //Traemos la info del usuario 1
+
+    LaunchedEffect(Unit) {
+        viewModel.getUserById(1) // Traemos la info del usuario 1
+    }
 
     LazyColumn (
         modifier = Modifier

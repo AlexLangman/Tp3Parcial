@@ -5,6 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -12,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
@@ -21,9 +25,18 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPrestamos
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileViewModel
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
+    val viewModel: HomeViewModel = viewModel()
+    val isLoading by viewModel.loading.collectAsState()
+    val userInfo by viewModel.userInfo.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.getUserById(1) // Traemos la info del usuario 1
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -33,7 +46,7 @@ fun HomeScreen(navController: NavHostController) {
         // Greeting
         item {
             Text(
-                text = "👋 Hola Mariana",
+                text = if (!isLoading && userInfo != null) ("👋 Hola " + userInfo!!.name.firstname) else "Cargando usuario...",
                 style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                 textAlign = TextAlign.Start,
                 modifier = Modifier.fillMaxWidth()
