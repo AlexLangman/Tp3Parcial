@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.icons.Icons
@@ -94,101 +95,107 @@ fun MyCardScreen(navController: NavHostController){
         SHOW_INFO.value = !SHOW_INFO.value
     }
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-        ){
-            Column {
-                Text(
-                    text = TEXT1,
-                    color = Gray900,
-                    modifier = Modifier
-                        .fillMaxWidth() // Ocupa todo el ancho disponible
-                        .padding(start = 18.dp)
-                )
-                GetCreditCard(
-                    cardNumber = if (SHOW_INFO.value) CREDIT_CARD_NUMBER else CREDIT_CARD_NUMBER_DEFAULT,
-                    expirationDate = if (SHOW_INFO.value) EXPIRATION_DATE else EXPIRATION_DATE_DEFAULT
-                )
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth() // Ocupa todo el ancho disponible
-                        .wrapContentWidth(Alignment.CenterHorizontally)
-                        .clickable(onClick = { onShowInfo() }),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.Visibility,
-                        contentDescription = "Visibility Icon",
-                        tint = Purple900
-                    )
+        item {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ){
+                Column {
                     Text(
-                        text = SHOW_INFO_TEXT,
-                        color = Purple900,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start = 5.dp)
+                        text = TEXT1,
+                        color = Gray900,
+                        modifier = Modifier
+                            .fillMaxWidth() // Ocupa todo el ancho disponible
+                            .padding(start = 18.dp)
                     )
+                    GetCreditCard(
+                        cardNumber = if (SHOW_INFO.value) CREDIT_CARD_NUMBER else CREDIT_CARD_NUMBER_DEFAULT,
+                        expirationDate = if (SHOW_INFO.value) EXPIRATION_DATE else EXPIRATION_DATE_DEFAULT
+                    )
+                    Row (
+                        modifier = Modifier
+                            .fillMaxWidth() // Ocupa todo el ancho disponible
+                            .wrapContentWidth(Alignment.CenterHorizontally)
+                            .clickable(onClick = { onShowInfo() }),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Visibility,
+                            contentDescription = "Visibility Icon",
+                            tint = Purple900
+                        )
+                        Text(
+                            text = SHOW_INFO_TEXT,
+                            color = Purple900,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 5.dp)
+                        )
+                    }
                 }
             }
         }
         //Linea separadora
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 10.dp)
-                .drawBehind {
-                    drawLine(
-                        color = Gray900, // Cambia el color del subrayado
-                        start = Offset(0f, size.height), // Comienza en la parte inferior izquierda
-                        end = Offset(
-                            size.width,
-                            size.height
-                        ), // Termina en la parte inferior derecha
-                        strokeWidth = 2f // Grosor del subrayado
-                    )
-                }
-        )
-        Box(){
-            Column {
-                Text(
-                    text = FINAL_INFO,
-                    inlineContent = inlineContent,
-                    color = Gray900,
-                    modifier = Modifier
-                        .fillMaxWidth() // Ocupa todo el ancho disponible
-                        .padding(start = 18.dp, end = 18.dp)
-                )
-                Text(
-                    text = TEXT2,
-                    color = Gray900,
-                    modifier = Modifier
-                        .fillMaxWidth() // Ocupa todo el ancho disponible
-                        .padding(start = 18.dp)
-                        .padding(top = 7.dp)
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 18.dp)
-                ){
-                    Column(
+        item {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp)
+                    .drawBehind {
+                        drawLine(
+                            color = Gray900, // Cambia el color del subrayado
+                            start = Offset(0f, size.height), // Comienza en la parte inferior izquierda
+                            end = Offset(
+                                size.width,
+                                size.height
+                            ), // Termina en la parte inferior derecha
+                            strokeWidth = 2f // Grosor del subrayado
+                        )
+                    }
+            )
+        }
+        item {
+            Box(){
+                Column {
+                    Text(
+                        text = FINAL_INFO,
+                        inlineContent = inlineContent,
+                        color = Gray900,
                         modifier = Modifier
-                            .padding(vertical = 10.dp)
-                    ) {
-                        buttonsInfo.map {
-                            arrowButton(
-                                text = it.title,
-                                description = it.description,
-                                icon = it.icon,
-                                iconBackgrounColor = it.buttonColor)
+                            .fillMaxWidth() // Ocupa todo el ancho disponible
+                            .padding(start = 18.dp, end = 18.dp)
+                    )
+                    Text(
+                        text = TEXT2,
+                        color = Gray900,
+                        modifier = Modifier
+                            .fillMaxWidth() // Ocupa todo el ancho disponible
+                            .padding(start = 18.dp)
+                            .padding(top = 7.dp)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 18.dp)
+                    ){
+                        Column(
+                            modifier = Modifier
+                                .padding(vertical = 10.dp)
+                        ) {
+                            buttonsInfo.map {
+                                arrowButton(
+                                    text = it.title,
+                                    description = it.description,
+                                    icon = it.icon,
+                                    iconBackgrounColor = it.buttonColor)
+                            }
                         }
                     }
                 }
             }
         }
-    }
+        }
 }
