@@ -1,7 +1,9 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.components.cards
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,6 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.R
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red1
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow1
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow2
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow3
 
 @Composable
 fun CardContent(
@@ -60,6 +66,24 @@ fun CardContent(
                 text = expirationDate,
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.White
+            )
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(18.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(25.dp)
+                    .background(Yellow1.copy(alpha = 0.85f), shape = CircleShape)
+            )
+            Box(
+                modifier = Modifier
+                    .size(25.dp)
+                    .offset(x = (-16).dp) // Desplaza el segundo círculo hacia la izquierda para superponerlo
+                    .background(Red1.copy(alpha = 0.85f), shape = CircleShape) // Amarillo
             )
         }
     }
