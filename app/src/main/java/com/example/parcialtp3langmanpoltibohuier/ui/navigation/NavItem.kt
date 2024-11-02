@@ -24,7 +24,7 @@ sealed class NavItem(
     object MyAccount: NavItem(AppRoutes.MY_ACCOUNT, { getIconMovement() }, { getIconMovementSelected()}, "My Account")
     object MyCard: NavItem(AppRoutes.MY_CARD, { getIconWalet()},{ getIconWaletSelected() }, "My Card")
     object ServicePayment: NavItem(AppRoutes.SERVICE_PAYMENT, { getIconMovement()},{ getIconMovementSelected()}, "Service Payment")
-    object MyProfile: NavItem(AppRoutes.SPLASH, { getIconMenu()}, { getIconMenuSelected()}, "My Profile")
+    object MyProfile: NavItem(AppRoutes.MY_PROFILE, { getIconMenu()}, { getIconMenuSelected()}, "My Profile")
 
 
 }

@@ -7,4 +7,5 @@ object AppRoutes {
     val SERVICE_PAYMENT = "servicePaymentScreen"
     val SPLASH = "splashScreen"
     val SIGN_IN = "signInScreen"
+    val MY_PROFILE = "myProfileScreen"
 }
