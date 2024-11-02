@@ -39,7 +39,7 @@ fun myAccountScreen() {
     val viewModel: MyAccountViewModel = viewModel()
     val payments by viewModel.payments.observeAsState(emptyList())
     val SUBTITLE = "MOVIMIENTOS"
-    val LOADING = "Loading transactions..."
+    val LOADING = "Cargando transacciones..."
 
     // Llama a fetchPayments() una vez cuando el Composable se lanza
     LaunchedEffect(Unit) {
