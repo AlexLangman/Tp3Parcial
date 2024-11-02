@@ -16,19 +16,11 @@ data class BankAccount(
 )
 
 data class Transactions(
-    val credit_card_transactions: List<CreditCardTransaction>, // Primer array
-    val bank_account_transactions: List<BankAccountTransactions>  // Segundo array
+    val credit_card_transactions: List<Transaction>, // Primer array
+    val bank_account_transactions: List<Transaction>  // Segundo array
 )
 
-data class CreditCardTransaction(
-    val transaction_id: String,
-    val date: String,
-    val description: String,
-    val amount: Float,
-    val currency: String,
-    val type: String
-)
-data class BankAccountTransactions(
+data class Transaction(
     val transaction_id: String,
     val date: String,
     val description: String,
