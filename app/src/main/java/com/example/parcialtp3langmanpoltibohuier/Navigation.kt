@@ -3,9 +3,15 @@ package com.example.parcialtp3langmanpoltibohuier
 import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,18 +35,22 @@ fun Navigation(navController: NavHostController) {
 
 
     Scaffold(
-
         topBar = {
+
         },
         bottomBar = {
-            if(currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN ){
-                tabBar(navController = navController, currentRoute = currentRoute )
+            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN) {
+                tabBar(navController = navController, currentRoute = currentRoute)
             }
-        }
-    ) {
+        },
+        modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
+    ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = AppRoutes.HOME
+            startDestination = AppRoutes.HOME,
+            Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
         )
         {
             composable(AppRoutes.SPLASH) {
