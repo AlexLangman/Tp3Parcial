@@ -3,6 +3,7 @@ package com.example.parcialtp3langmanpoltibohuier.ui.screens.home
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,54 +24,76 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Greeting
-        Text(
-            text = "👋 Hola Mariana",
-            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-            textAlign = TextAlign.Start,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Text(
-            text = "Último acceso: Mar 01, 2020 4:55 PM",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color.Gray, // TODO: change color
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-        GetCreditCard(cardNumber = "4957 **** **** 5824", expirationDate = "05/23")
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Balance and Actions
-        TextButton(onClick = { /* TODO: Show more card details */ }) {
-            Text(text = "Mostrar datos", color = MaterialTheme.colorScheme.primary)
+        item {
+            Text(
+                text = "👋 Hola Mariana",
+                style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                textAlign = TextAlign.Start,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        item {
+            Text(
+                text = "Último acceso: Mar 01, 2020 4:55 PM",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.Gray, // TODO: change color
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
 
-        Text(
-            text = "SALDO DISPONIBLE",
-            style = MaterialTheme.typography.labelMedium,
-            color = Color.Gray // TODO: change color
-        )
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+        item {
+            GetCreditCard(cardNumber = "4957 **** **** 5824", expirationDate = "05/23")
+        }
 
-        Text(
-            text = "$1.322,78",
-            style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
-        )
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        // Balance and Actions
+        item {
+            TextButton(onClick = { /* TODO: Show more card details */ }) {
+                Text(text = "Mostrar datos", color = MaterialTheme.colorScheme.primary)
+            }
+        }
 
-        // Action Grid
-        ActionGrid()
+        item {
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        item {
+            Text(
+                text = "SALDO DISPONIBLE",
+                style = MaterialTheme.typography.labelMedium,
+                color = Color.Gray // TODO: change color
+            )
+        }
+
+        item {
+            Text(
+                text = "$1.322,78",
+                style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(24.dp))
+        }
+
+        item {
+            // Action Grid
+            ActionGrid()
+        }
     }
 }
 
