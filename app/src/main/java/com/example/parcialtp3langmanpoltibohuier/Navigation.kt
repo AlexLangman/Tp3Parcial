@@ -22,7 +22,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn.SignInRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn.LogInRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
@@ -38,12 +38,12 @@ fun Navigation(navController: NavHostController) {
 
     Scaffold(
         topBar = {
-            if(currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN){
+            if(currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN){
                 topBarCustom(currentRoute)
             }
         },
         bottomBar = {
-            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.SIGN_IN) {
+            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN) {
                 tabBar(navController = navController, currentRoute = currentRoute)
             }
         },
@@ -51,7 +51,7 @@ fun Navigation(navController: NavHostController) {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = AppRoutes.HOME,
+            startDestination = AppRoutes.LOG_IN,
             Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
@@ -60,8 +60,8 @@ fun Navigation(navController: NavHostController) {
             composable(AppRoutes.SPLASH) {
                 SplashRoute(navController)
             }
-            composable(AppRoutes.SIGN_IN) {
-                SignInRoute(navController)
+            composable(AppRoutes.LOG_IN) {
+                LogInRoute(navController)
             }
             composable(AppRoutes.HOME) {
                 HomeRoute(navController)
