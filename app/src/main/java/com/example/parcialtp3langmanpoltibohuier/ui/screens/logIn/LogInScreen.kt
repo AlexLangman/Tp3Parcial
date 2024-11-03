@@ -1,14 +1,19 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -28,6 +33,11 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.checkbox.checkbox
 
 @Composable
 fun LogInScreen(navController: NavHostController) {
+    var isFormVisible by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        isFormVisible = true
+    }
 
     Column(
         modifier = Modifier
@@ -36,7 +46,12 @@ fun LogInScreen(navController: NavHostController) {
     ) {
         HeaderSection()
 
-        FormSection(navController)
+        AnimatedVisibility(
+            visible = isFormVisible,
+            enter = slideInVertically(initialOffsetY = { it }, animationSpec = tween(500))
+        ) {
+            FormSection(navController)
+        }
     }
 }
 
