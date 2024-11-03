@@ -23,7 +23,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn.LogInRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.splash.SplashRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
 
@@ -51,7 +51,7 @@ fun Navigation(navController: NavHostController) {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = AppRoutes.LOG_IN,
+            startDestination = AppRoutes.SPLASH,
             Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
