@@ -1,11 +1,11 @@
-package com.example.parcialtp3langmanpoltibohuier.ui.screens.SignIn
+package com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun SignInRoute(
+fun LogInRoute(
     navController: NavHostController
 ){
-    SignInScreen(navController = navController)
+    LogInScreen(navController = navController)
 }

@@ -6,6 +6,6 @@ object AppRoutes {
     val MY_CARD = "myCardScreen"
     val SERVICE_PAYMENT = "servicePaymentScreen"
     val SPLASH = "splashScreen"
-    val SIGN_IN = "signInScreen"
+    val LOG_IN = "logInScreen"
     val MY_PROFILE = "myProfileScreen"
 }
