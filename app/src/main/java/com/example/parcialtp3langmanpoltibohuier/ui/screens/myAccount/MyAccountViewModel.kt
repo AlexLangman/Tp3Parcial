@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 
 class MyAccountViewModel: ViewModel() {
-    public val payments = MutableLiveData<List<Payment>>()
+    val payments = MutableLiveData<List<Payment>>()
     private val firebaseFirestore = FirebaseFirestore.getInstance()
     private val paymentsCollection = firebaseFirestore.collection("payments")
 

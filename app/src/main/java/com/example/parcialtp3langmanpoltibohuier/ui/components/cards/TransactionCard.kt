@@ -23,10 +23,6 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-@RequiresApi(Build.VERSION_CODES.O)
-val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yy")
-
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun TransactionCard(transaction: Transaction) {
     Box(modifier = Modifier.padding(8.dp)){
@@ -89,15 +85,15 @@ fun formattedValue(value: Double): String {
         "-$$formattedValue"
     }
 }
-/* // TODO: Luego de ajustar Transaction, colocar el preview correcto aca.
 @Preview(showBackground = true)
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun TransactionCardPreview() {
     val transaction = Transaction(
-        LocalDate.of(2020,3,19).toString(),
-        TransactionType.TRANSFERENCIA.toString(),
         "394991",
-        2000.00)
+        "19-03-20",
+        "Transferencia",
+        2000.00,
+        "$",
+        "Transferencia")
     TransactionCard(transaction)
-}*/
+}
