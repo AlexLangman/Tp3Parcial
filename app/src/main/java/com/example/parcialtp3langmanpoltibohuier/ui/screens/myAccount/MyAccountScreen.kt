@@ -28,24 +28,24 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
+import com.example.parcialtp3langmanpoltibohuier.ui.components.samples.sampleTransactions
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 import androidx.compose.runtime.livedata.observeAsState
 import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyAccountScreen() {
-    val viewModel: MyAccountViewModel = viewModel()
-    val payments by viewModel.payments.observeAsState(emptyList())
+    //val viewModel: MyAccountViewModel = viewModel()
+    //val payments by viewModel.payments.observeAsState(emptyList())
     val SUBTITLE = "MOVIMIENTOS"
     val LOADING = "Cargando transacciones..."
 
     // Llama a fetchPayments() una vez cuando el Composable se lanza
-    LaunchedEffect(Unit) {
+    /*LaunchedEffect(Unit) {
         viewModel.fetchPayments()
-    }
+    }*/
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -74,24 +74,28 @@ fun MyAccountScreen() {
             )
         }
 
-        if (payments != null && payments!!.isNotEmpty()){
+        //if (payments != null && payments!!.isNotEmpty()){
             // Listado de movimientos
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                val transacctions: List<Transaction> = payments!![0].transactions.credit_card_transactions + payments!![0].transactions.bank_account_transactions
-                items(transacctions) { item ->
+                /*val transactions: List<Transaction> =
+                    payments!![0].transactions.credit_card_transactions +
+                            payments!![0].transactions.bank_account_transactions
+                            
+                 */
+                val transactions = sampleTransactions
+                items(transactions) { item ->
                     TransactionCard(item)
                     horizontalDivider()
                 }
             }
-        }
+        /*}
         else {
             Text(text = LOADING)
-        }
+        }*/
     }
 }
 
 @Preview(showBackground = true)
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyAccountScreenPreview() {
     MyAccountScreen()
