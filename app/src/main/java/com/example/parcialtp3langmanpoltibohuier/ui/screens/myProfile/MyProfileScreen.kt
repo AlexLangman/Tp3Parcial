@@ -1,10 +1,11 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile
 
+import ThemeViewModel
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -120,13 +122,18 @@ fun ProfileOptions(navController: NavHostController) {
     }
 }
 
+
+
+
 @Composable
-fun DarkModeButton() {
+fun DarkModeButton(themeViewModel: ThemeViewModel = viewModel()) {
+    val isDarkTheme by themeViewModel.isDarkTheme.observeAsState(false)
     arrowButton(
-        text = "Dark Mode",
+        text = if (isDarkTheme) "Light Mode" else "Dark Mode",
         description = "",
         icon = Icons.Filled.ArrowForward,
         iconBackgrounColor = Green800,
-        isOnlyOne = true
+        isOnlyOne = true,
+        action = { themeViewModel.toggleTheme() }
     )
 }

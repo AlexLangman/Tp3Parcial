@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,14 +29,11 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCa
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.samples.sampleTransactions
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomVerticalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconTransferencia
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
 
 
 @Composable
@@ -64,13 +62,13 @@ fun MyAccountScreen() {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Black)
+                .background(MaterialTheme.colorScheme.onBackground)
                 .padding(horizontal = 16.dp, vertical = 10.dp),
             contentAlignment = Alignment.TopStart
         ) {
             Text(
                 text = SUBTITLE,
-                color = White,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium
             )
@@ -78,7 +76,8 @@ fun MyAccountScreen() {
 
         //if (payments != null && payments!!.isNotEmpty()){
             // Listado de movimientos
-            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+
+            LazyColumn(modifier = Modifier.fillMaxWidth().background(color= MaterialTheme.colorScheme.primary)) {
                 /*val transactions: List<Transaction> =
                     payments!![0].transactions.credit_card_transactions +
                             payments!![0].transactions.bank_account_transactions
@@ -105,10 +104,10 @@ fun MenuIntermedio() {
             .padding(bottom = 16.dp)
             .border(
                 width = 1.dp,
-                color = Gray500,
+                color = MaterialTheme.colorScheme.outline,
                 shape = RoundedCornerShape(8.dp)
             ),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column {

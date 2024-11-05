@@ -165,7 +165,10 @@ fun FormSection(navController: NavHostController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Purple900)
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Purple900,
+                    contentColor = White
+                )
             ) {
                 Text("Ingresar")
             }

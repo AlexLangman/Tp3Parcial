@@ -17,8 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconDirectTv
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
 fun ServiceCard(
@@ -27,7 +25,9 @@ fun ServiceCard(
 ) {
     Card(
         modifier = Modifier.size(112.dp, 96.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface,
+        ),
         elevation = CardDefaults.cardElevation(0.dp)
     ) {
         Column(
@@ -47,11 +47,11 @@ fun ServiceCard(
             Text(
                 text = label,
                 fontSize = 12.sp,
-                color = Black,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold,
                 lineHeight = 14.4.sp,
                 modifier = Modifier
-                    .size(84.dp,38.dp)
+                    .size(84.dp, 38.dp)
                     .padding(vertical = 4.dp),
                 textAlign = TextAlign.Center // Center text alignment
             )

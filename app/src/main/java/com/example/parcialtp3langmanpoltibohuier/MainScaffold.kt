@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
@@ -23,8 +24,6 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
 import com.example.parcialtp3langmanpoltibohuier.ui.components.topBar.topBarCustom
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
-
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -43,7 +42,7 @@ fun MainScaffold(navController: NavHostController) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(White)
+                        .background(MaterialTheme.colorScheme.primary)
                 ) {
                     topBarCustom(currentRoute)
                 }
@@ -54,7 +53,7 @@ fun MainScaffold(navController: NavHostController) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(White)
+                        .background(MaterialTheme.colorScheme.primary)
                 ){
                     tabBar(navController = navController, currentRoute = currentRoute, drawerState = drawerState, coroutineScope = coroutineScope)
                 }
@@ -69,7 +68,7 @@ fun MainScaffold(navController: NavHostController) {
                 Box(
                     modifier = Modifier
                         .padding(innerPadding)
-                        .background(White)
+                        .background(MaterialTheme.colorScheme.primary)
 
                 ) {
                     MyProfileRoutes(navController = navController)
