@@ -1,5 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier
 
+import MainScaffold
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
             ParcialTP3LangmanPoltiBohuierTheme {
                 Scaffold (
-                    content = { Navigation(navController = navController) }
+                    content = { MainScaffold(navController = navController) }
                 )
             }
         }

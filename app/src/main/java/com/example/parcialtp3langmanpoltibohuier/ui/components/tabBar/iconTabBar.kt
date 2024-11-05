@@ -45,10 +45,6 @@ fun iconTabBar(
             .clickable(onClick = onClick)
             .padding(horizontal = 16.dp)
     ) {
-
-
-
-
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
