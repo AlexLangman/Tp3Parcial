@@ -1,9 +1,12 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -15,10 +18,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconShow
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPagoServicio
@@ -26,6 +32,8 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileViewModel
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -76,7 +84,17 @@ fun HomeScreen(navController: NavHostController) {
         // Balance and Actions
         item {
             TextButton(onClick = { /* TODO: Show more card details */ }) {
-                Text(text = "Mostrar datos", color = MaterialTheme.colorScheme.primary)
+                Image(
+                    painter = getIconShow(),
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp)
+                )
+                Text(
+                    text = "Mostrar datos",
+                    color = MaterialTheme.colorScheme.primary,
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(start = 2.dp)
+                )
             }
         }
 
@@ -112,25 +130,40 @@ fun HomeScreen(navController: NavHostController) {
 
 @Composable
 fun ActionGrid() {
-
-    Column {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
-            ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
-            ServiceCard(icon = getIconPrestamos(), label = "SEGUIR MIS PRESTAMOS")
-        }
-        Row (
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            ServiceCard(icon = getIconRecargaSube(), label = "RECARGA SUBE")
-            ServiceCard(icon = getIconRecargaCelu(), label = "RECARGA CELU")
-            ServiceCard(icon = getIconPagoServicio(), label = "PAGAR SERVICIO")
+    Card(
+        modifier = Modifier
+            .border(
+                width = 1.dp,
+                color = Gray500,
+                shape = RoundedCornerShape(8.dp)
+            ),
+        colors = CardDefaults.cardColors(containerColor = White),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Column {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
+                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
+                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                ServiceCard(icon = getIconPrestamos(), label = "SEGUIR MIS PRESTAMOS")
+            }
+            HorizontalDivider(thickness = 1.dp)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                ServiceCard(icon = getIconRecargaSube(), label = "RECARGA SUBE")
+                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                ServiceCard(icon = getIconRecargaCelu(), label = "RECARGA CELU")
+                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                ServiceCard(icon = getIconPagoServicio(), label = "PAGAR SERVICIO")
+            }
         }
     }
 }

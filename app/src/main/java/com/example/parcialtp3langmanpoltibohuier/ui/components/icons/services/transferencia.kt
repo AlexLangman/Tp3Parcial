@@ -7,5 +7,6 @@ import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
 fun getIconTransferencia(): Painter {
-    return painterResource(id = R.drawable.ic_transferencia)
+    return painterResource(id = R.drawable.ic_transferir_dinero)
+    // TODO: Eliminar el icono desechado
 }
