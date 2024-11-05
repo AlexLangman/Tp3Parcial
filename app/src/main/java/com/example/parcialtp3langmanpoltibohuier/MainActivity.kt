@@ -10,22 +10,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.DarkModeButton
+import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.SwitchThemeComponent
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.ParcialTP3LangmanPoltiBohuierTheme
 import com.google.firebase.FirebaseApp
-import com.google.firebase.firestore.firestore
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -42,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     content = {
                         Column {
                             MainScaffold(navController = rememberNavController())
-                            DarkModeButton(themeViewModel = themeViewModel) // Botón de cambio de tema
+                            SwitchThemeComponent(themeViewModel = themeViewModel) // Botón de cambio de tema
                         }
                     }
                 )

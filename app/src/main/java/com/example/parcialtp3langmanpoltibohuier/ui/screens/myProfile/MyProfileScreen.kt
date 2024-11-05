@@ -1,11 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile
 
-import ThemeViewModel
-import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,11 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -33,8 +26,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.R
 import com.example.parcialtp3langmanpoltibohuier.dataClasses.UserDataClass
+import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.SwitchThemeComponent
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.arrowButton
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountViewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 
 @Composable
@@ -58,7 +51,7 @@ fun MyProfileScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(32.dp))
             ProfileOptions(navController)
             Spacer(modifier = Modifier.height(64.dp))
-            DarkModeButton()
+            SwitchThemeComponent()
         }
     }
 }
@@ -120,20 +113,4 @@ fun ProfileOptions(navController: NavHostController) {
             )
         }
     }
-}
-
-
-
-
-@Composable
-fun DarkModeButton(themeViewModel: ThemeViewModel = viewModel()) {
-    val isDarkTheme by themeViewModel.isDarkTheme.observeAsState(false)
-    arrowButton(
-        text = if (isDarkTheme) "Light Mode" else "Dark Mode",
-        description = "",
-        icon = Icons.Filled.ArrowForward,
-        iconBackgrounColor = Green800,
-        isOnlyOne = true,
-        action = { themeViewModel.toggleTheme() }
-    )
 }
