@@ -73,7 +73,7 @@ fun ServicePaymentScreen(navController: NavHostController) {
                             color = MaterialTheme.colorScheme.outline,
                             shape = RoundedCornerShape(8.dp)
                         ),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                     elevation = CardDefaults.cardElevation(2.dp)
                 ){
                     Column(

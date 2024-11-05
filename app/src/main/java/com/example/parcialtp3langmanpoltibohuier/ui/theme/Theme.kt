@@ -20,6 +20,7 @@ private val DarkColorScheme = darkColorScheme(
     background = Gray900,
     outline = Gray100,
     onBackground = White,
+    surface = Black
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -27,6 +28,7 @@ private val LightColorScheme = lightColorScheme(
     background = Gray100,
     outline = White,
     onBackground = Black,
+    surface = White
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -48,15 +50,8 @@ fun ParcialTP3LangmanPoltiBohuierTheme(
     content: @Composable () -> Unit
 ) {
     val isDarkTheme by themeViewModel.isDarkTheme.observeAsState(false) // Observa el estado del tema
+    val colorScheme = if (isDarkTheme) DarkColorScheme else LightColorScheme
 
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-        isDarkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
 
     MaterialTheme(
         colorScheme = colorScheme,

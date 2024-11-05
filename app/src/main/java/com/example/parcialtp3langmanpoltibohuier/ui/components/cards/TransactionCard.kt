@@ -2,12 +2,14 @@ package com.example.parcialtp3langmanpoltibohuier.ui.components.cards
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +27,8 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 fun TransactionCard(transaction: Transaction) {
-    Box(modifier = Modifier.padding(8.dp)){
+    Box(modifier = Modifier.padding(8.dp).background(color= MaterialTheme.colorScheme.primary)
+    ){
         Row(
             modifier = Modifier
                 .fillMaxWidth(),

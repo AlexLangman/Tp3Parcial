@@ -26,7 +26,7 @@ fun ServiceCard(
     Card(
         modifier = Modifier.size(112.dp, 96.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.surface,
         ),
         elevation = CardDefaults.cardElevation(0.dp)
     ) {
