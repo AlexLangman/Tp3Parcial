@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,9 +40,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconTransferencia
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
+
 
 @Composable
 fun ServicePaymentScreen(navController: NavHostController) {
@@ -71,10 +70,10 @@ fun ServicePaymentScreen(navController: NavHostController) {
                         .padding(4.dp)
                         .border(
                             width = 1.dp,
-                            color = Gray500,
+                            color = MaterialTheme.colorScheme.outline,
                             shape = RoundedCornerShape(8.dp)
                         ),
-                    colors = CardDefaults.cardColors(containerColor = White),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
                     elevation = CardDefaults.cardElevation(2.dp)
                 ){
                     Column(
@@ -100,7 +99,7 @@ fun ServicePaymentScreen(navController: NavHostController) {
                         Text(
                             text = label,
                             fontSize = 12.sp,
-                            color = Black,
+                            color = MaterialTheme.colorScheme.onBackground,
                             fontWeight = FontWeight.Bold,
                             lineHeight = 14.4.sp,
                             textAlign = TextAlign.Center // Center text alignment

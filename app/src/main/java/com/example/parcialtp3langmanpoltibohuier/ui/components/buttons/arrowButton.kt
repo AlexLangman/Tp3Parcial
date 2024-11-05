@@ -13,7 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,10 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
+import androidx.navigation.compose.rememberNavController
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeScreen
+
 
 @Composable
 fun arrowButton(
@@ -44,7 +48,7 @@ fun arrowButton(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(White)
+            .background(MaterialTheme.colorScheme.primary)
             .border(
                 width = 1.dp, // Ancho del borde
                 color = Color.Gray, // Color del borde. TODO: Definir color
@@ -67,14 +71,14 @@ fun arrowButton(
         ) {
             Text(
                 text = text,
-                color = Purple900, // Cambia el color de la letra a negro
+                color = MaterialTheme.colorScheme.onBackground, // Cambia el color de la letra a negro
                 fontWeight = FontWeight.Bold // Cambia la letra a negrita
             )
             if(description != "" ) {
                 description?.let {
                     Text(
                         text = it, // Debe ser un String
-                        color = Gray900, // Debe ser un Color
+                        color = MaterialTheme.colorScheme.outline, // Debe ser un Color
                         fontSize = 10.sp, // Debe ser un TextUnit, que generalmente se especifica como sp
                     )
                 }
@@ -90,9 +94,23 @@ fun arrowButton(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = White, // Cambia el color del ícono a blanco
+                tint = MaterialTheme.colorScheme.primary, // Cambia el color del ícono a blanco
                 modifier = Modifier.size(24.dp) // Tamaño del ícono dentro del círculo
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ArrowButtonPreview() {
+    arrowButton(
+        text = "La cuota de tu préstamo está próxima a vencer.",
+        description = "Ver préstamo",
+        icon = Icons.Filled.ArrowForward,
+        iconBackgrounColor = MaterialTheme.colorScheme.primary,
+        isFirst = true,
+        isLast = false,
+        isOnlyOne = false
+    )
 }

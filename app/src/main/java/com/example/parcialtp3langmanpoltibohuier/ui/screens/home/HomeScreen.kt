@@ -38,11 +38,9 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
 import com.example.parcialtp3langmanpoltibohuier.ui.components.showData.ShowDataEye
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
+
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -74,7 +72,7 @@ fun HomeScreen(navController: NavHostController) {
         Text(
             text = "Último acceso: Mar 01, 2020 4:55 PM",
             style = MaterialTheme.typography.bodySmall,
-            color = Gray900,
+            color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Normal,
             modifier = Modifier.fillMaxWidth()
         )
@@ -94,7 +92,7 @@ fun HomeScreen(navController: NavHostController) {
             style = MaterialTheme.typography.labelMedium,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
-            color = Black
+            color = MaterialTheme.colorScheme.onBackground
         )
         Text(
             text = "$1.322,78",
@@ -102,7 +100,7 @@ fun HomeScreen(navController: NavHostController) {
             modifier = Modifier.padding(bottom = 16.dp),
             fontSize = 44.sp,
             fontWeight = FontWeight.Bold,
-            color = Black
+            color = MaterialTheme.colorScheme.onBackground
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -121,11 +119,6 @@ fun ExpiringFeeWarning() {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp)
-            .border(
-                width = 1.dp,
-                color = Gray500,
-                shape = RoundedCornerShape(8.dp)
-            )
             .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
             .background(Red900) // Color de fondo
             .padding(horizontal = 8.dp) // Espaciado interno
@@ -174,10 +167,10 @@ fun ActionGrid() {
         modifier = Modifier
             .border(
                 width = 1.dp,
-                color = Gray500,
+                color = MaterialTheme.colorScheme.outline,
                 shape = RoundedCornerShape(8.dp)
             ),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
         elevation = CardDefaults.cardElevation(0.dp)
     ) {
         Column {
