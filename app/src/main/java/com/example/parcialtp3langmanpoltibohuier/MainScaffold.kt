@@ -19,6 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.Navigation
 import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
 import com.example.parcialtp3langmanpoltibohuier.ui.components.topBar.topBarCustom
@@ -29,7 +30,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileR
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScaffold(navController: NavHostController) {
+fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val coroutineScope = rememberCoroutineScope()
 
@@ -76,7 +77,10 @@ fun MainScaffold(navController: NavHostController) {
             },
 
         ) {
-            Navigation(navController = navController, Modifier.padding(innerPadding))
+            Box(Modifier.padding(innerPadding)){
+                Navigation(navController = navController, mainViewModel = mainViewModel)
+
+            }
         }
     }
 }
