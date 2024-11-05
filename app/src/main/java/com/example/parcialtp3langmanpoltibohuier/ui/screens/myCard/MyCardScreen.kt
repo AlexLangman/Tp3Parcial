@@ -1,18 +1,14 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material3.Icon
@@ -30,14 +26,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.arrowButton
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.showData.ShowDataEye
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow900
 
 @Composable
@@ -46,7 +41,6 @@ fun MyCardScreen(navController: NavHostController){
     val TEXT2 = "TARJETA FISICA"
     val INFO = "¿Sabias que podes pedir una tarjeta Mastercad fisica para utilizar directamente en los negocios que vos elijas?"
 
-    val SHOW_INFO_TEXT = "Mostrar datos"
     val SHOW_INFO = remember { mutableStateOf(true) }
 
     var CREDIT_CARD_NUMBER_DEFAULT = "**** **** **** ****"
@@ -92,11 +86,6 @@ fun MyCardScreen(navController: NavHostController){
         )
     )
 
-    //Esta funcion se usa para mostrar/ocultar los datos de la tarjeta
-    fun onShowInfo(){
-        SHOW_INFO.value = !SHOW_INFO.value
-    }
-
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -106,7 +95,9 @@ fun MyCardScreen(navController: NavHostController){
                 modifier = Modifier
                     .fillMaxWidth()
             ){
-                Column {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Text(
                         text = TEXT1,
                         color = Gray900,
@@ -118,25 +109,7 @@ fun MyCardScreen(navController: NavHostController){
                         cardNumber = if (SHOW_INFO.value) CREDIT_CARD_NUMBER else CREDIT_CARD_NUMBER_DEFAULT,
                         expirationDate = if (SHOW_INFO.value) EXPIRATION_DATE else EXPIRATION_DATE_DEFAULT
                     )
-                    Row (
-                        modifier = Modifier
-                            .fillMaxWidth() // Ocupa todo el ancho disponible
-                            .wrapContentWidth(Alignment.CenterHorizontally)
-                            .clickable(onClick = { onShowInfo() }),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Visibility,
-                            contentDescription = "Visibility Icon",
-                            tint = Purple900
-                        )
-                        Text(
-                            text = SHOW_INFO_TEXT,
-                            color = Purple900,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 5.dp)
-                        )
-                    }
+                    ShowDataEye(onShowInfo = { SHOW_INFO.value = !SHOW_INFO.value })
                 }
             }
         }

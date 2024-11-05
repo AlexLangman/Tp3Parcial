@@ -11,10 +11,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -30,13 +31,13 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCa
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomVerticalDivider
-import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconShow
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPagoServicio
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPrestamos
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
+import com.example.parcialtp3langmanpoltibohuier.ui.components.showData.ShowDataEye
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
@@ -48,6 +49,12 @@ fun HomeScreen(navController: NavHostController) {
     val viewModel: HomeViewModel = viewModel()
     val isLoading by viewModel.loading.collectAsState()
     val userInfo by viewModel.userInfo.collectAsState()
+
+    val showInfo = remember { mutableStateOf(true) }
+    val creditCardNumberDefault = "**** **** **** ****"
+    val creditCardNumber = "4957 **** **** 5824"
+    val expirationDateDefault = "**/**"
+    val expirationDate = "05/23"
 
     LaunchedEffect(Unit) {
         viewModel.getUserById(1) // Traemos la info del usuario 1
@@ -74,23 +81,11 @@ fun HomeScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         GetCreditCard(
-            cardNumber = "4957 **** **** 5824",
-            expirationDate = "05/23"
+            cardNumber = if (showInfo.value) creditCardNumber else creditCardNumberDefault,
+            expirationDate = if (showInfo.value) expirationDate else expirationDateDefault
         )
 
-        TextButton(onClick = { /* TODO: Show more card details */ }) {
-            Image(
-                painter = getIconShow(),
-                contentDescription = null,
-                modifier = Modifier.size(16.dp)
-            )
-            Text(
-                text = "Mostrar datos",
-                color = MaterialTheme.colorScheme.primary,
-                fontSize = 14.sp,
-                modifier = Modifier.padding(start = 2.dp)
-            )
-        }
+        ShowDataEye(onShowInfo = { showInfo.value = !showInfo.value })
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -142,7 +137,7 @@ fun ExpiringFeeWarning() {
         ) {
             Column(
                 modifier = Modifier
-                    .padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp), // Espaciado alrededor del contenido
+                    .padding(start = 12.dp,end = 12.dp), // Espaciado alrededor del contenido
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
             ) {
@@ -158,6 +153,7 @@ fun ExpiringFeeWarning() {
                     fontWeight = FontWeight.Medium,
                     color = White
                 )
+
             }
             // Espaciador que empuja la imagen hacia la derecha
             Spacer(modifier = Modifier.weight(1f))
