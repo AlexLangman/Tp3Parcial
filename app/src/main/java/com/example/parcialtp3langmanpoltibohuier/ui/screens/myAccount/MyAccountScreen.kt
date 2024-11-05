@@ -4,16 +4,25 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,6 +42,15 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 import androidx.compose.runtime.livedata.observeAsState
 import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
+import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPagoServicio
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPrestamos
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconTransferencia
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
 
 
 @Composable
@@ -52,11 +70,10 @@ fun MyAccountScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(50.dp))
-
-        // Card info de cuenta
-        MyAccountCard(modifier = Modifier.fillMaxWidth())
-
-        Spacer(modifier = Modifier.height(150.dp))
+        MyAccountCard()
+        Spacer(modifier = Modifier.height(8.dp))
+        MenuIntermedio()
+        Spacer(modifier = Modifier.height(8.dp))
 
         // Titulo de franja oscura
         Box(
@@ -92,6 +109,37 @@ fun MyAccountScreen() {
         else {
             Text(text = LOADING)
         }*/
+    }
+}
+
+@Composable
+fun MenuIntermedio() {
+    Card(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 16.dp)
+            .border(
+                width = 1.dp,
+                color = Gray500,
+                shape = RoundedCornerShape(8.dp)
+            ),
+        colors = CardDefaults.cardColors(containerColor = White),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Column {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+
+            ) {
+                ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
+                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
+                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                ServiceCard(icon = getIconTransferencia(), label = "TRANSFERIR DINERO")
+            }
+        }
     }
 }
 
