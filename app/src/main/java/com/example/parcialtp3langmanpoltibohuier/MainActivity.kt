@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.ParcialTP3LangmanPoltiBohuierTheme
@@ -34,10 +35,11 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val currentBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = currentBackStackEntry?.destination?.route
+            val mainViewModel: MainViewModel = viewModel()
 
             ParcialTP3LangmanPoltiBohuierTheme {
                 Scaffold (
-                    content = { MainScaffold(navController = navController) }
+                    content = { MainScaffold(navController = navController, mainViewModel = mainViewModel) }
                 )
             }
         }
