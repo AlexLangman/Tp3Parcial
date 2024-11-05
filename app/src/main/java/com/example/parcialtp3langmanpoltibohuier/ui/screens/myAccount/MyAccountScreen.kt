@@ -1,8 +1,5 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount
 
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -14,41 +11,29 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
-import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
+import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.samples.sampleTransactions
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
-import androidx.compose.runtime.livedata.observeAsState
-import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomVerticalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
-import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPagoServicio
-import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPrestamos
-import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
-import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconTransferencia
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
 
@@ -102,7 +87,7 @@ fun MyAccountScreen() {
                 val transactions = sampleTransactions
                 items(transactions) { item ->
                     TransactionCard(item)
-                    horizontalDivider()
+                    CustomHorizontalDivider()
                 }
             }
         /*}
@@ -134,9 +119,9 @@ fun MenuIntermedio() {
 
             ) {
                 ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
-                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                CustomVerticalDivider()
                 ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
-                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                CustomVerticalDivider()
                 ServiceCard(icon = getIconTransferencia(), label = "TRANSFERIR DINERO")
             }
         }
