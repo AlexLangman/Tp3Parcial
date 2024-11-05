@@ -19,12 +19,10 @@ sealed class NavItem(
     val icon: @Composable () -> Painter,
     val iconSelected: @Composable () -> Painter,
     val label: String
-){
-    object Home: NavItem(AppRoutes.HOME, {getIconHome()}, {getIconHomeSelected()}, "Home")
-    object MyAccount: NavItem(AppRoutes.MY_ACCOUNT, { getIconMovement() }, { getIconMovementSelected()}, "My Account")
-    object MyCard: NavItem(AppRoutes.MY_CARD, { getIconWalet()},{ getIconWaletSelected() }, "My Card")
-    object ServicePayment: NavItem(AppRoutes.SERVICE_PAYMENT, { getIconMovement()},{ getIconMovementSelected()}, "Service Payment")
-    object MyProfile: NavItem(AppRoutes.MY_PROFILE, { getIconMenu()}, { getIconMenuSelected()}, "My Profile")
-
-
+) {
+    object Home : NavItem(AppRoutes.HOME, { getIconHome() }, { getIconHomeSelected() }, "Home")
+    object MyAccount : NavItem(AppRoutes.MY_ACCOUNT, { getIconMovement() }, { getIconMovementSelected() }, "My Account")
+    object MyCard : NavItem(AppRoutes.MY_CARD, { getIconWalet() }, { getIconWaletSelected() }, "My Card")
+    object ServicePayment : NavItem(AppRoutes.SERVICE_PAYMENT, { getIconMovement() }, { getIconMovementSelected() }, "Service Payment")
+    object MyProfile : NavItem(AppRoutes.MY_PROFILE, { getIconMenu() }, { getIconMenuSelected() }, "My Profile")
 }
