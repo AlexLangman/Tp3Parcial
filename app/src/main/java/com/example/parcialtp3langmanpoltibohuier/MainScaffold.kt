@@ -39,7 +39,7 @@ fun MainScaffold(navController: NavHostController) {
 
     Scaffold(
         topBar = {
-            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN) {
+            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN && currentRoute != AppRoutes.HOME) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
