@@ -35,13 +35,18 @@ class MainActivity : ComponentActivity() {
         FirebaseApp.initializeApp(this)
         enableEdgeToEdge()
         setContent {
-            val themeViewModel: ThemeViewModel = viewModel() // Instancia del ViewModel
 
+            val navController = rememberNavController()
+            val currentBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentRoute = currentBackStackEntry?.destination?.route
+            val mainViewModel: MainViewModel = viewModel()
+            val themeViewModel: ThemeViewModel = viewModel() // Instancia del ViewModel
             ParcialTP3LangmanPoltiBohuierTheme(themeViewModel = themeViewModel) {
                 Scaffold (
+
                     content = {
                         Column {
-                            MainScaffold(navController = rememberNavController())
+                            MainScaffold(navController = rememberNavController(), mainViewModel = mainViewModel)
                             DarkModeButton(themeViewModel = themeViewModel) // Botón de cambio de tema
                         }
                     }
