@@ -1,10 +1,9 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.tabBar.getIconCreditCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.tabBar.getIconCreditCardSelected
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.tabBar.getIconHome
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.tabBar.getIconHomeSelected
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.tabBar.getIconMenu
@@ -22,7 +21,7 @@ sealed class NavItem(
 ) {
     object Home : NavItem(AppRoutes.HOME, { getIconHome() }, { getIconHomeSelected() }, "Home")
     object MyAccount : NavItem(AppRoutes.MY_ACCOUNT, { getIconMovement() }, { getIconMovementSelected() }, "My Account")
-    object MyCard : NavItem(AppRoutes.MY_CARD, { getIconWalet() }, { getIconWaletSelected() }, "My Card")
-    object ServicePayment : NavItem(AppRoutes.SERVICE_PAYMENT, { getIconMovement() }, { getIconMovementSelected() }, "Service Payment")
+    object MyCard : NavItem(AppRoutes.MY_CARD, { getIconCreditCard() }, { getIconCreditCardSelected() }, "My Card")
+    object ServicePayment : NavItem(AppRoutes.SERVICE_PAYMENT, { getIconWalet() }, { getIconWaletSelected() }, "Service Payment")
     object MyProfile : NavItem(AppRoutes.MY_PROFILE, { getIconMenu() }, { getIconMenuSelected() }, "My Profile")
 }
