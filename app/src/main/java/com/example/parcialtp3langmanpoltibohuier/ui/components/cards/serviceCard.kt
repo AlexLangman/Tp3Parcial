@@ -2,6 +2,8 @@ package com.example.parcialtp3langmanpoltibohuier.ui.components.cards
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,7 +15,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconDirectTv
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
 fun ServiceCard(
@@ -21,16 +26,14 @@ fun ServiceCard(
     label: String
 ) {
     Card(
-        modifier = Modifier
-            .size(100.dp)
-            .padding(8.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        modifier = Modifier.size(112.dp, 96.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
+        elevation = CardDefaults.cardElevation(0.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp),
+                .padding(top = 5.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -38,18 +41,18 @@ fun ServiceCard(
             Image(
                 painter = icon,
                 contentDescription = null,
-                modifier = Modifier.size(32.dp) // Adjust size as needed
+                modifier = Modifier.size(24.dp)
             )
             // Bottom Text
             Text(
                 text = label,
-                fontSize = 10.sp,
-                color = Color.Gray,
-                fontWeight = FontWeight.Light,
-                lineHeight = 12.sp,
+                fontSize = 12.sp,
+                color = Black,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 14.4.sp,
                 modifier = Modifier
-                    .fillMaxWidth() // Make the text take the full width
-                    .padding(top = 4.dp), // Optional padding between icon and text
+                    .size(84.dp,38.dp)
+                    .padding(vertical = 4.dp),
                 textAlign = TextAlign.Center // Center text alignment
             )
         }
@@ -61,7 +64,7 @@ fun ServiceCard(
 fun ServiceCardPreview() {
     MaterialTheme {
         ServiceCard(
-            icon = getIconDirectTv(),
+            icon = getIconCargarDinero(),
             label = "CARGAR DINERO"
         )
     }

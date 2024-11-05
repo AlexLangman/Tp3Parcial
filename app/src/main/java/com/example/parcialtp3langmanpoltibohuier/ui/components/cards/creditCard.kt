@@ -19,71 +19,87 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.R
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow900
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow800
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow100
 
 @Composable
 fun CardContent(
     backgroundImage: Painter,
     overlayImage: Painter,
+    brand: Painter,
     cardNumber: String,
-    expirationDate: String
+    expirationDate: String,
 ) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(8.dp))
+            .width(336.dp)
+            .height(212.dp),
+        contentAlignment = Alignment.Center // Center the content
     ) {
+        // Fondo y diseño de tarjeta
         Image(
             painter = backgroundImage,
-            contentDescription = null,
+            contentDescription = "Color de Fondo",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.matchParentSize() // Matches size with Box
+            modifier = Modifier.matchParentSize()
         )
         Image(
             painter = overlayImage,
-            contentDescription = null,
-            contentScale = ContentScale.Fit, // Use Fit to ensure it shows correctly
+            contentDescription = "Diseño especifico sombreado",
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .align(Alignment.Center) // Center the overlay image
-                .matchParentSize() // Set a specific size for the overlay image
+                .align(Alignment.Center)
+                .fillMaxSize()
         )
-        // Column for text fields, aligned at the bottom
+        Box(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(top = 24.dp, end = 24.dp) // Aplica el padding aquí
+        ) {
+            Image(
+                painter = brand,
+                contentDescription = "Brand",
+                modifier = Modifier.size(50.dp) // Tamaño fijo para la imagen
+            )
+        }
+
+        // Datos de la tarjeta
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 16.dp, start = 16.dp),
+                .padding(start = 24.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.Bottom,
 
             ) {
             Text(
                 text = cardNumber,
-                style = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp),
+                style = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
                 color = Color.White
             )
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = expirationDate,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 20.sp),
                 color = Color.White
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
+
+        // Logo de Mastercard
         Box(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(18.dp)
+                .padding(24.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .size(25.dp)
-                    .background(Yellow900.copy(alpha = 0.85f), shape = CircleShape)
+                    .size(28.dp)
+                    .offset(x = (-16).dp) // Desplaza el círculo hacia la izquierda
+                    .background(Color(0xD9EB001B), shape = CircleShape) // Circulo Rojo
             )
             Box(
                 modifier = Modifier
-                    .size(25.dp)
-                    .offset(x = (-16).dp) // Desplaza el segundo círculo hacia la izquierda para superponerlo
-                    .background(Red900.copy(alpha = 0.85f), shape = CircleShape) // Amarillo
+                    .size(28.dp)
+                    .background(Color(0xD9F79E1B), shape = CircleShape) // Circulo Naranja
             )
         }
     }
@@ -91,16 +107,11 @@ fun CardContent(
 
 @Composable
 fun GetCreditCard(cardNumber: String, expirationDate: String) {
-    Box(
-        modifier = Modifier
-            .padding(16.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .height(200.dp),
-        contentAlignment = Alignment.Center // Center the content
-    ) {
+    Box {
         CardContent(
             backgroundImage = painterResource(id = R.drawable.img_credit_p2),
             overlayImage = painterResource(id = R.drawable.img_credit_p1),
+            brand = painterResource(id = R.drawable.waynimovil),
             cardNumber = cardNumber,
             expirationDate = expirationDate
         )
@@ -110,5 +121,8 @@ fun GetCreditCard(cardNumber: String, expirationDate: String) {
 @Preview(showBackground = false)
 @Composable
 fun CreditCardPreview() {
-    GetCreditCard(cardNumber = "4957 **** **** 5824", expirationDate = "12/23")
+    GetCreditCard(
+        cardNumber = "4957 **** **** 5824",
+        expirationDate = "12/23"
+    )
 }
