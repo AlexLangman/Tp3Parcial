@@ -1,11 +1,11 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.LaunchedEffect
@@ -13,17 +13,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
+import com.example.parcialtp3langmanpoltibohuier.R
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
-import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.horizontalDivider
+import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
+import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomVerticalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconShow
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
@@ -31,8 +37,10 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPrestamos
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileViewModel
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
@@ -44,86 +52,122 @@ fun HomeScreen(navController: NavHostController) {
     LaunchedEffect(Unit) {
         viewModel.getUserById(1) // Traemos la info del usuario 1
     }
-
-    LazyColumn(
+    Column (
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Greeting
-        item {
+        Text(
+            text = if (!isLoading && userInfo != null) ("👋 Hola " + userInfo!!.name.firstname) else "Cargando usuario...",
+            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+            textAlign = TextAlign.Start,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Text(
+            text = "Último acceso: Mar 01, 2020 4:55 PM",
+            style = MaterialTheme.typography.bodySmall,
+            color = Gray900,
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        GetCreditCard(
+            cardNumber = "4957 **** **** 5824",
+            expirationDate = "05/23"
+        )
+
+        TextButton(onClick = { /* TODO: Show more card details */ }) {
+            Image(
+                painter = getIconShow(),
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
             Text(
-                text = if (!isLoading && userInfo != null) ("👋 Hola " + userInfo!!.name.firstname) else "Cargando usuario...",
-                style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-                textAlign = TextAlign.Start,
-                modifier = Modifier.fillMaxWidth()
+                text = "Mostrar datos",
+                color = MaterialTheme.colorScheme.primary,
+                fontSize = 14.sp,
+                modifier = Modifier.padding(start = 2.dp)
             )
         }
 
-        item {
-            Text(
-                text = "Último acceso: Mar 01, 2020 4:55 PM",
-                style = MaterialTheme.typography.bodySmall,
-                color = Color.Gray, // TODO: change color
-                modifier = Modifier.fillMaxWidth()
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = "SALDO DISPONIBLE",
+            style = MaterialTheme.typography.labelMedium,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = Black
+        )
+        Text(
+            text = "$1.322,78",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 16.dp),
+            fontSize = 44.sp,
+            fontWeight = FontWeight.Bold,
+            color = Black
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        ExpiringFeeWarning()
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        ActionGrid()
+    }
+}
+
+@Composable
+fun ExpiringFeeWarning() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp)
+            .border(
+                width = 1.dp,
+                color = Gray500,
+                shape = RoundedCornerShape(8.dp)
             )
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-        item {
-            GetCreditCard(cardNumber = "4957 **** **** 5824", expirationDate = "05/23")
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        // Balance and Actions
-        item {
-            TextButton(onClick = { /* TODO: Show more card details */ }) {
-                Image(
-                    painter = getIconShow(),
-                    contentDescription = null,
-                    modifier = Modifier.size(16.dp)
+            .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
+            .background(Red900) // Color de fondo
+            .padding(horizontal = 8.dp) // Espaciado interno
+    ) {
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically, // Asegura que el contenido esté centrado verticalmente
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp), // Espaciado alrededor del contenido
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text = "La cuota de tu préstamo está próxima a vencer.",
+                    fontSize = 12.sp,
+                    color = White
                 )
                 Text(
-                    text = "Mostrar datos",
-                    color = MaterialTheme.colorScheme.primary,
-                    fontSize = 14.sp,
-                    modifier = Modifier.padding(start = 2.dp)
+                    text = "Ver préstamo",
+                    style = TextStyle(textDecoration = TextDecoration.Underline),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = White
                 )
             }
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-
-        item {
-            Text(
-                text = "SALDO DISPONIBLE",
-                style = MaterialTheme.typography.labelMedium,
-                color = Color.Gray // TODO: change color
+            // Espaciador que empuja la imagen hacia la derecha
+            Spacer(modifier = Modifier.weight(1f))
+            Image(
+                painter = painterResource(id = R.drawable.next_arrow),
+                contentDescription = "Arrow",
+                modifier = Modifier
+                    .size(16.dp)
+                    .padding(end = 4.dp) // Espaciado final
             )
-        }
-
-        item {
-            Text(
-                text = "$1.322,78",
-                style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
-            )
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(24.dp))
-        }
-
-        item {
-            // Action Grid
-            ActionGrid()
         }
     }
 }
@@ -138,7 +182,7 @@ fun ActionGrid() {
                 shape = RoundedCornerShape(8.dp)
             ),
         colors = CardDefaults.cardColors(containerColor = White),
-        elevation = CardDefaults.cardElevation(4.dp)
+        elevation = CardDefaults.cardElevation(0.dp)
     ) {
         Column {
             Row(
@@ -147,21 +191,21 @@ fun ActionGrid() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
-                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                CustomVerticalDivider()
                 ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
-                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                CustomVerticalDivider()
                 ServiceCard(icon = getIconPrestamos(), label = "SEGUIR MIS PRESTAMOS")
             }
-            HorizontalDivider(thickness = 1.dp)
+            CustomHorizontalDivider()
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 ServiceCard(icon = getIconRecargaSube(), label = "RECARGA SUBE")
-                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                CustomVerticalDivider()
                 ServiceCard(icon = getIconRecargaCelu(), label = "RECARGA CELU")
-                VerticalDivider(thickness = 1.dp, modifier = Modifier.height(96.dp))
+                CustomVerticalDivider()
                 ServiceCard(icon = getIconPagoServicio(), label = "PAGAR SERVICIO")
             }
         }
