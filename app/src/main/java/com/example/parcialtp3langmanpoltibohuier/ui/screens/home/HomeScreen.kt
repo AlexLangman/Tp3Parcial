@@ -73,8 +73,8 @@ fun HomeScreen(navController: NavHostController) {
         Text(
             text = "Último acceso: Mar 01, 2020 4:55 PM",
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Normal,
+            color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -84,9 +84,11 @@ fun HomeScreen(navController: NavHostController) {
             expirationDate = if (showInfo.value) expirationDate else expirationDateDefault
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
+
         ShowDataEye(onShowInfo = { showInfo.value = !showInfo.value })
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
             text = "SALDO DISPONIBLE",

@@ -37,8 +37,9 @@ fun TransactionCard(transaction: Transaction) {
             // Fecha
             Text(
                 text = transaction.date,
-                modifier = Modifier.padding(start= 6.dp, end = 20.dp),
-                fontSize = 15.sp
+                modifier = Modifier.padding(start= 6.dp, end = 24.dp),
+                fontWeight = FontWeight.Normal,
+                fontSize = 14.sp
             )
 
             // Descripción
@@ -47,11 +48,13 @@ fun TransactionCard(transaction: Transaction) {
             ) {
                 Text(
                     text = transaction.type,
-                    fontSize = 15.sp
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 14.sp
                 )
                 Text(
                     text = "Aut. " + transaction.transaction_id,
-                    fontSize = 15.sp
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 14.sp
                 )
             }
 
@@ -64,14 +67,14 @@ fun TransactionCard(transaction: Transaction) {
                     Text(
                         text = formattedValue(transaction.amount),
                         fontWeight = FontWeight.Medium,
-                        fontSize = 15.sp,
+                        fontSize = 14.sp,
                         color = Green900
                     )
                 } else {
                     Text(
                         text = formattedValue(transaction.amount),
                         fontWeight = FontWeight.Medium,
-                        fontSize = 15.sp,
+                        fontSize = 14.sp,
                         color = Red900
                     )
                 }

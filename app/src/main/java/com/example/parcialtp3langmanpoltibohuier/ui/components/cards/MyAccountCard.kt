@@ -42,7 +42,7 @@ fun MyAccountCard() {
     Card(
         modifier = Modifier
             .sizeIn(minWidth = 336.dp, minHeight = 153.dp)
-            .padding(horizontal = GAP, vertical = PADDING)
+            .padding(horizontal = GAP)
             .border(
                 width = BORDER_WIDTH,
                 color = MaterialTheme.colorScheme.surface,
