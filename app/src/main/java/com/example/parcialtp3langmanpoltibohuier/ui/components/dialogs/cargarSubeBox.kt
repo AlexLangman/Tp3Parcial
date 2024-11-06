@@ -26,15 +26,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.customButton
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconSube
+import com.example.parcialtp3langmanpoltibohuier.ui.components.topBar.topBarCustom
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 import kotlin.io.path.fileVisitor
 
 @Composable
-fun cargarSubeBox(onDismiss: () -> Unit){
+fun cargarSubeBox(onDismiss: () -> Unit, onContinue: () -> Unit){
     Dialog(
-        onDismissRequest = onDismiss
+        onDismissRequest = onDismiss,
     )
     {
         Column (
@@ -43,7 +46,7 @@ fun cargarSubeBox(onDismiss: () -> Unit){
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-
+            topBarDialog(onDismiss)
             Spacer(modifier = Modifier.height(48.dp))
             Text(
                 text = "Verificá que la información sea correcta:",
@@ -58,7 +61,7 @@ fun cargarSubeBox(onDismiss: () -> Unit){
             Spacer(modifier = Modifier.weight(1f))
 
             customButton(
-                onClick = { } ,
+                onClick = onContinue ,
                 text = "Continuar"
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -68,11 +71,11 @@ fun cargarSubeBox(onDismiss: () -> Unit){
 
 }
 
+
 @Composable
 fun boxSube(){
     Column (
         modifier = Modifier
-            .padding(16.dp)
             .clip(RoundedCornerShape(8.dp))
             .shadow(1.dp)
             .border(1.dp, MaterialTheme.colorScheme.primary)/*TODO: color borde*/,
@@ -99,8 +102,8 @@ fun boxSube(){
     }
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun CargarSubeBoxPreview(){
     cargarSubeBox({true})
-}
+}*/

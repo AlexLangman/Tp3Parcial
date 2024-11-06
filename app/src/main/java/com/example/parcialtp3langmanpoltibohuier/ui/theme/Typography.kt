@@ -22,6 +22,7 @@ val CustomTypography = Typography(
         fontSize = 74.sp,
         lineHeight = 74.sp,
         letterSpacing = (-0.02).em
+        //XL6
     ),
     displayMedium = TextStyle(
         fontFamily = manropeFontFamily,
@@ -29,18 +30,21 @@ val CustomTypography = Typography(
         fontSize = 44.sp,
         lineHeight = 48.4.sp,
         letterSpacing = (-0.01).em
+        //Xl5
     ),
     displaySmall = TextStyle(
         fontFamily = manropeFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 32.sp,
         lineHeight = 35.2.sp
+        //XL4
     ),
     headlineLarge = TextStyle(
         fontFamily = manropeFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
         lineHeight = 26.4.sp
+        //XL3
     ),
     headlineMedium = TextStyle(
         fontFamily = manropeFontFamily,
@@ -71,7 +75,8 @@ val CustomTypography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 14.4.sp
-    ),
+    )
+    ,
     labelLarge = TextStyle(
         fontFamily = manropeFontFamily,
         fontWeight = FontWeight.Bold,
