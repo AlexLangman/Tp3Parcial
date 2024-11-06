@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -31,7 +29,6 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileR
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel) {
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
     val coroutineScope = rememberCoroutineScope()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -56,15 +53,15 @@ fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel
                         .fillMaxWidth()
                         .background(MaterialTheme.colorScheme.primary)
                 ){
-                    tabBar(navController = navController, currentRoute = currentRoute, drawerState = drawerState, coroutineScope = coroutineScope)
+                    tabBar(navController = navController, currentRoute = currentRoute, drawerState = mainViewModel.drawerState, coroutineScope = coroutineScope)
                 }
             }
         },
         modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
     ) { innerPadding ->
         ModalNavigationDrawer (
-            drawerState = drawerState,
-            gesturesEnabled = drawerState.isOpen,
+            drawerState = mainViewModel.drawerState,
+            gesturesEnabled = mainViewModel.drawerState.isOpen,
             drawerContent = {
                 Box(
                     modifier = Modifier
@@ -72,13 +69,17 @@ fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel
                         .background(MaterialTheme.colorScheme.primary)
 
                 ) {
-                    MyProfileRoutes(navController = navController)
+                    MyProfileRoutes(
+                        navController = navController,
+                        mainViewModel = mainViewModel,
+                        coroutineScope = coroutineScope
+                    )
                 }
             },
 
         ) {
             Box(Modifier.padding(innerPadding)){
-                Navigation(navController = navController, mainViewModel = mainViewModel)
+                Navigation(navController = navController, mainViewModel = mainViewModel, coroutineScope = coroutineScope)
 
             }
         }
