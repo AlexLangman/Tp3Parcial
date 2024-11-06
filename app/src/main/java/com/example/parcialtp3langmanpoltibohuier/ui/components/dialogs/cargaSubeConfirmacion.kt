@@ -22,15 +22,16 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.customBut
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconOk
 
 @Composable
-fun cargarSubeConfirmacion(){
-    Dialog(onDismissRequest = { true }) {
+fun cargarSubeConfirmacion(onDismiss: () -> Unit){
+    Dialog(onDismissRequest = { onDismiss }) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background),
             horizontalAlignment = Alignment.CenterHorizontally
-                
+
         ) {
+            topBarDialog(onDismiss, false)
             Spacer(modifier = Modifier.weight(1f))
             Image(
                 painter = getIconOk(),
@@ -45,7 +46,7 @@ fun cargarSubeConfirmacion(){
             )
             Spacer(modifier = Modifier.weight(1f))
             customButton(
-                onClick = { } ,
+                onClick = onDismiss ,
                 text = "Finalizar"
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -55,8 +56,8 @@ fun cargarSubeConfirmacion(){
 
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun CargarSubeConfirmacionPreview(){
     cargarSubeConfirmacion()
-}
+}*/

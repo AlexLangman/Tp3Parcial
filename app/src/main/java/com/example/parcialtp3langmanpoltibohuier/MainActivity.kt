@@ -11,7 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.SwitchThemeComponent
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.ParcialTP3LangmanPoltiBohuierTheme
@@ -36,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
                     content = {
                         Column {
-                            MainScaffold(navController = rememberNavController())
+                            MainScaffold(navController = rememberNavController(), mainViewModel = mainViewModel)
                             SwitchThemeComponent(themeViewModel = themeViewModel) // Botón de cambio de tema
                         }
                     }

@@ -1,4 +1,4 @@
-package com.example.parcialtp3langmanpoltibohuier.ui.screens.splash
+package com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

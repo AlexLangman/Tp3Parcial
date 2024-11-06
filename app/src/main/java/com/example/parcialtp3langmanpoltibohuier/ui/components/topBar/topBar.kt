@@ -23,13 +23,13 @@ import com.google.firebase.annotations.concurrent.Background
 fun topBarCustom(
     currentRoute : String
 ){
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(64.dp)
             .background(MaterialTheme.colorScheme.background),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+        contentAlignment = Alignment.Center
+
     ) {
         Text(
             TopBarTitles.getTitle(currentRoute),

@@ -21,7 +21,7 @@ fun customButton(
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary/*TODO: COLOR*/)
+        colors = ButtonDefaults.buttonColors(containerColor = Purple900/*TODO: COLOR*/)
     ) {
         Text(text)
     }
