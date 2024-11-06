@@ -26,8 +26,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.arrowButton
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.showData.ShowDataEye
@@ -175,4 +177,11 @@ fun MyCardScreen(navController: NavHostController){
             }
         }
         }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MyCardScreenPreview() {
+    val navController = rememberNavController()
+    MyCardScreen(navController)
 }

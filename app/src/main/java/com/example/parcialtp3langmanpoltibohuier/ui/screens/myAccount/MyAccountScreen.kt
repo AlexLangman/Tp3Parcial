@@ -19,12 +19,17 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
@@ -38,25 +43,24 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 
 @Composable
 fun MyAccountScreen() {
-    //val viewModel: MyAccountViewModel = viewModel()
-    //val payments by viewModel.payments.observeAsState(emptyList())
+    val viewModel: MyAccountViewModel = viewModel()
+    val payments by viewModel.payments.observeAsState(emptyList())
     val SUBTITLE = "MOVIMIENTOS"
     val LOADING = "Cargando transacciones..."
 
     // Llama a fetchPayments() una vez cuando el Composable se lanza
-    /*LaunchedEffect(Unit) {
+    LaunchedEffect(Unit) {
         viewModel.fetchPayments()
-    }*/
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
         MyAccountCard()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(28.dp))
         MenuIntermedio()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Titulo de franja oscura
         Box(
@@ -74,25 +78,25 @@ fun MyAccountScreen() {
             )
         }
 
-        //if (payments != null && payments!!.isNotEmpty()){
+        if (payments != null && payments!!.isNotEmpty()){
             // Listado de movimientos
 
             LazyColumn(modifier = Modifier.fillMaxWidth().background(color= MaterialTheme.colorScheme.primary)) {
-                /*val transactions: List<Transaction> =
+                val transactions: List<Transaction> =
                     payments!![0].transactions.credit_card_transactions +
                             payments!![0].transactions.bank_account_transactions
                             
-                 */
-                val transactions = sampleTransactions
+
+                // val transactions = sampleTransactions
                 items(transactions) { item ->
                     TransactionCard(item)
                     CustomHorizontalDivider()
                 }
             }
-        /*}
+        }
         else {
             Text(text = LOADING)
-        }*/
+        }
     }
 }
 
