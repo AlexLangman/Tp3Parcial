@@ -14,15 +14,20 @@ import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn.LogInRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.Splash.SplashRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.splash.SplashRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
+import kotlinx.coroutines.CoroutineScope
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun Navigation(navController: NavHostController,mainViewModel: MainViewModel) {
+fun Navigation(
+    navController: NavHostController,
+    mainViewModel: MainViewModel,
+    coroutineScope: CoroutineScope
+) {
     NavHost(
         navController = navController,
         startDestination = AppRoutes.SPLASH,
@@ -48,7 +53,7 @@ fun Navigation(navController: NavHostController,mainViewModel: MainViewModel) {
             ServicePaymentRoute(navController)
         }
         composable(AppRoutes.MY_PROFILE) {
-            MyProfileRoutes(navController)
+            MyProfileRoutes(navController, mainViewModel, coroutineScope)
         }
     }
 
