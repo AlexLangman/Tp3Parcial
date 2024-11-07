@@ -12,6 +12,6 @@ fun CustomHorizontalDivider() {
     HorizontalDivider(
         thickness = 1.dp,
         modifier = Modifier.height(8.dp),
-        color = Gray500
+        color = Gray500,
     )
 }

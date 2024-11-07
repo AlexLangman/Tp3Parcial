@@ -4,7 +4,7 @@ data class Payment(
     val user_id: String,
     val balance: Float,
     val bank_account: BankAccount,
-    val transactions: Transactions
+    val transactions: Transactions,
 )
 
 data class BankAccount(
@@ -12,10 +12,12 @@ data class BankAccount(
     val account_type: String,
     val cvu: String,
     val alias: String,
-    val currency: String
+    val currency: String,
 )
 
 data class Transactions(
-    val credit_card_transactions: List<Transaction>, // Primer array
-    val bank_account_transactions: List<Transaction>  // Segundo array
+    // Primer array
+    val credit_card_transactions: List<Transaction>,
+    // Segundo array
+    val bank_account_transactions: List<Transaction>,
 )

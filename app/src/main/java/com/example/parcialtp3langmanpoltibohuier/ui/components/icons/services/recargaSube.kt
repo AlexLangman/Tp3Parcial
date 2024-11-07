@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconRecargaSube(): Painter {
-    return painterResource(id = R.drawable.ic_recarga_sube)
-}
+fun getIconRecargaSube(): Painter = painterResource(id = R.drawable.ic_recarga_sube)

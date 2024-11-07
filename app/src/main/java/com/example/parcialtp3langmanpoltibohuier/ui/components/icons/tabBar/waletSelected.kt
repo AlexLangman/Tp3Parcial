@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconWaletSelected(): Painter {
-    return painterResource(id = R.drawable.wallet_1)
-}
+fun getIconWaletSelected(): Painter = painterResource(id = R.drawable.wallet_1)

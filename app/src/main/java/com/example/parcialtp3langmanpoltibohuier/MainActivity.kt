@@ -38,18 +38,18 @@ class MainActivity : ComponentActivity() {
             val themeViewModel: ThemeViewModel = viewModel()
 
             ParcialTP3LangmanPoltiBohuierTheme(themeViewModel = themeViewModel) {
-                Scaffold (
-
+                Scaffold(
                     content = {
                         Column {
                             MainScaffold(
                                 navController = navController,
                                 mainViewModel = mainViewModel,
                                 currentRoute = currentRoute,
-                                coroutineScope = coroutineScope)
+                                coroutineScope = coroutineScope,
+                            )
                             SwitchThemeComponent(themeViewModel = themeViewModel)
                         }
-                    }
+                    },
                 )
             }
         }

@@ -23,43 +23,51 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-
 @Composable
-fun tabBar(navController: NavHostController, currentRoute: String, drawerState: DrawerState, coroutineScope: CoroutineScope) {
-    val items = listOf(
-        NavItem.Home,
-        NavItem.MyAccount,
-        NavItem.MyCard,
-        NavItem.ServicePayment,
-        NavItem.MyProfile
-    )
+fun tabBar(
+    navController: NavHostController,
+    currentRoute: String,
+    drawerState: DrawerState,
+    coroutineScope: CoroutineScope,
+) {
+    val items =
+        listOf(
+            NavItem.Home,
+            NavItem.MyAccount,
+            NavItem.MyCard,
+            NavItem.ServicePayment,
+            NavItem.MyProfile,
+        )
 
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(50.dp)
-            .shadow(1.dp)
-            .padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .shadow(1.dp)
+                .padding(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         items.forEach { item ->
             Column(
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally // Centrar horizontalmente
+                horizontalAlignment = Alignment.CenterHorizontally, // Centrar horizontalmente
             ) {
                 Spacer(modifier = Modifier.height(2.dp))
 
                 // Agregar la línea encima del ícono
-                val isSelected = if (drawerState.isOpen) {
-                    item.route == NavItem.MyProfile.route
-                } else {
-                    currentRoute == item.route
-                }
+                val isSelected =
+                    if (drawerState.isOpen) {
+                        item.route == NavItem.MyProfile.route
+                    } else {
+                        currentRoute == item.route
+                    }
                 Box(
-                    modifier = Modifier
-                        .width(60.dp)
-                        .height(4.dp)
-                        .background(if (isSelected) Green800 else Color.Transparent),
+                    modifier =
+                        Modifier
+                            .width(60.dp)
+                            .height(4.dp)
+                            .background(if (isSelected) Green800 else Color.Transparent),
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -86,7 +94,7 @@ fun tabBar(navController: NavHostController, currentRoute: String, drawerState: 
                                 navController.navigate(item.route)
                             }
                         }
-                    }
+                    },
                 )
             }
         }

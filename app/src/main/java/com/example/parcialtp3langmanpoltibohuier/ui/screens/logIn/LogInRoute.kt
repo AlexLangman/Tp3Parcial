@@ -4,8 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun LogInRoute(
-    navController: NavHostController
-){
+fun LogInRoute(navController: NavHostController) {
     LogInScreen(navController = navController)
 }

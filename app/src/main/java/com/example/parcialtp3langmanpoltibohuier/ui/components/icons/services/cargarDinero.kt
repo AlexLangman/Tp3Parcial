@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconCargarDinero(): Painter {
-    return painterResource(id = R.drawable.ic_cargar_dinero)
-}
+fun getIconCargarDinero(): Painter = painterResource(id = R.drawable.ic_cargar_dinero)

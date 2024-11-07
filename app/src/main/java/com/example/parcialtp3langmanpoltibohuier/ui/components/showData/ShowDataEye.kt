@@ -16,32 +16,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
-
-fun onShowInfo(value: Boolean): Boolean {
-    return !value
-}
+fun onShowInfo(value: Boolean): Boolean = !value
 
 @Composable
 fun ShowDataEye(onShowInfo: () -> Unit) {
     val showInfoText = "Mostrar datos"
 
-    Row (
-    modifier = Modifier
-    .fillMaxWidth()
-    .wrapContentWidth(Alignment.CenterHorizontally)
-    .clickable(onClick = { onShowInfo() }),
-    verticalAlignment = Alignment.CenterVertically
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .clickable(onClick = { onShowInfo() }),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
             imageVector = Icons.Filled.Visibility,
             contentDescription = "Visibility Icon",
-            tint = MaterialTheme.colorScheme.onBackground
+            tint = MaterialTheme.colorScheme.onBackground,
         )
         Text(
             text = showInfoText,
             color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(start = 5.dp)
+            modifier = Modifier.padding(start = 5.dp),
         )
     }
 }

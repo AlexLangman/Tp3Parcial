@@ -1,7 +1,5 @@
 package com.example.parcialtp3langmanpoltibohuier.dataClasses
 
-import com.example.parcialtp3langmanpoltibohuier.ui.components.enums.TransactionType
-import java.time.LocalDate
 /*
 data class Transaction(
     val date: LocalDate,
@@ -17,5 +15,5 @@ data class Transaction(
     val description: String,
     val amount: Double,
     val currency: String,
-    val type: String
+    val type: String,
 )

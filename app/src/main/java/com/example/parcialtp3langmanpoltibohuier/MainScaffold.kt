@@ -13,10 +13,8 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.Navigation
 import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
@@ -25,20 +23,27 @@ import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
 import kotlinx.coroutines.CoroutineScope
 
-
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel, currentRoute: String, coroutineScope: CoroutineScope) {
-
-
+fun MainScaffold(
+    navController: NavHostController,
+    mainViewModel: MainViewModel,
+    currentRoute: String,
+    coroutineScope: CoroutineScope,
+) {
     Scaffold(
         topBar = {
-            if (mainViewModel.drawerState.isClosed && currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN && currentRoute != AppRoutes.HOME) {
+            if (mainViewModel.drawerState.isClosed &&
+                currentRoute != AppRoutes.SPLASH &&
+                currentRoute != AppRoutes.LOG_IN &&
+                currentRoute != AppRoutes.HOME
+            ) {
                 Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.primary)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.primary),
                 ) {
                     topBarCustom(currentRoute)
                 }
@@ -47,38 +52,42 @@ fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel
         bottomBar = {
             if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN) {
                 Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.primary)
-                ){
-                    tabBar(navController = navController, currentRoute = currentRoute, drawerState = mainViewModel.drawerState, coroutineScope = coroutineScope)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.primary),
+                ) {
+                    tabBar(
+                        navController = navController,
+                        currentRoute = currentRoute,
+                        drawerState = mainViewModel.drawerState,
+                        coroutineScope = coroutineScope,
+                    )
                 }
             }
         },
-        modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
+        modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars),
     ) { innerPadding ->
-        ModalNavigationDrawer (
+        ModalNavigationDrawer(
             drawerState = mainViewModel.drawerState,
             gesturesEnabled = mainViewModel.drawerState.isOpen,
             drawerContent = {
                 Box(
-                    modifier = Modifier
-                        .padding(innerPadding)
-                        .background(MaterialTheme.colorScheme.primary)
-
+                    modifier =
+                        Modifier
+                            .padding(innerPadding)
+                            .background(MaterialTheme.colorScheme.primary),
                 ) {
                     MyProfileRoutes(
                         navController = navController,
                         mainViewModel = mainViewModel,
-                        coroutineScope = coroutineScope
+                        coroutineScope = coroutineScope,
                     )
                 }
             },
-
         ) {
-            Box(Modifier.padding(innerPadding)){
+            Box(Modifier.padding(innerPadding)) {
                 Navigation(navController = navController, mainViewModel = mainViewModel, coroutineScope = coroutineScope)
-
             }
         }
     }
