@@ -6,7 +6,7 @@ Waynimóvil está lanzando su primera aplicación pública para Android, una bil
 
 ## Capturas
 
-![Captura 1](screenshoot-app.png)
+![Captura 1](screenshoot-app.jpg)
 
 ## Status: 🚧 In progress 🚧
 Waynimóvil está en desarrollo y algunas pantallas cuentan con componentes no implementados.
