@@ -30,6 +30,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.*
 import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.passwordInput
 import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.textInput
 import com.example.parcialtp3langmanpoltibohuier.ui.components.checkbox.checkbox
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconTopLogin
 
 @Composable
 fun LogInScreen(navController: NavHostController) {
@@ -64,30 +65,10 @@ fun HeaderSection() {
             .size(250.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.waynimovil),
-                contentDescription = "Logo",
-                modifier = Modifier.size(60.dp)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Image(
-                painter = painterResource(id = R.drawable.union),
-                contentDescription = "Logo",
-                modifier = Modifier.size(180.dp)
-            )
-        }
         Image(
-            painter = painterResource(id = R.drawable.top),
-            contentDescription = "Texto",
-            modifier = Modifier
-                .scale(2.5f)
-                .offset(y = (-30).dp)
+            painter = getIconTopLogin(),
+            contentDescription = "Top Login",
+            modifier = Modifier.size(288.dp)
         )
     }
 }

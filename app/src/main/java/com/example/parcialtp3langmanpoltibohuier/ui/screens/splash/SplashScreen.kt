@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
@@ -20,7 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.parcialtp3langmanpoltibohuier.R
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconWaynimovil
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green900
 
@@ -55,16 +54,11 @@ fun SplashScreen(navController: NavHostController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.waynimovil),
+                    painter = getIconWaynimovil(),
                     contentDescription = "Logo",
-                    modifier = Modifier.size(60.dp)
+                    modifier = Modifier.size(257.dp)
                 )
-                Spacer(modifier = Modifier.width(16.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.union),
-                    contentDescription = "Logo",
-                    modifier = Modifier.size(180.dp)
-                )
+
             }
         }
     }
