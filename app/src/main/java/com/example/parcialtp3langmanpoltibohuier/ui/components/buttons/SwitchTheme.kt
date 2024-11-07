@@ -56,12 +56,13 @@ fun SwitchThemeComponent(themeViewModel: ThemeViewModel = viewModel()) {
         modifier =
             Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primary)
+                .background(MaterialTheme.colorScheme.background)
                 .border(
                     width = 1.dp,
                     color = Color.Gray,
-                    shape = RoundedCornerShape(0.dp),
-                ).padding(5.dp),
+                    shape = RoundedCornerShape(5.dp),
+                )
+                .padding(5.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {

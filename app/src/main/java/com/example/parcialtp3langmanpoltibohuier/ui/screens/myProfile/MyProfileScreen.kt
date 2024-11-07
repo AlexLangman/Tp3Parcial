@@ -20,15 +20,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.R
 import com.example.parcialtp3langmanpoltibohuier.dataClasses.UserDataClass
@@ -81,6 +84,7 @@ fun MyProfileScreen(
                 Spacer(modifier = Modifier.height(64.dp))
                 // DarkModeButton()
                 SwitchThemeComponent()
+                Spacer(modifier = Modifier.height(32.dp))
             }
         }
     }
@@ -175,4 +179,13 @@ fun closeSession(
     navController.navigate(AppRoutes.LOG_IN){
         popUpTo(0) { inclusive = true }
     }
+}
+@Preview (showBackground = true)
+@Composable
+fun ProfileHeaderPreview() {
+    val navController = rememberNavController()
+    val mainViewModel = MainViewModel()
+    val coroutineScope = rememberCoroutineScope()
+
+    MyProfileScreen(navController, mainViewModel, coroutineScope)
 }

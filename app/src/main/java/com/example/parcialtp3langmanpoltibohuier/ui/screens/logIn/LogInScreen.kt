@@ -104,7 +104,7 @@ fun HeaderSection() {
 
     LaunchedEffect(Unit) {
         startEmojiAnimation = true
-        delay(500)
+        delay(700)
         startTextAnimation = true
     }
 

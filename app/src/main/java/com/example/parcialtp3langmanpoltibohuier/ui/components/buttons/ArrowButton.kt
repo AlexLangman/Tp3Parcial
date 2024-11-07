@@ -45,7 +45,7 @@ fun arrowButton(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primary)
+                .background(MaterialTheme.colorScheme.background)
                 .border(
                     width = 1.dp, // Ancho del borde
                     color = Color.Gray, // Color del borde. TODO: Definir color
