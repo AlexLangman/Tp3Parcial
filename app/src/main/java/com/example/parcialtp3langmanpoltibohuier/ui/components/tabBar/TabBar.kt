@@ -11,13 +11,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DrawerState
+import androidx.compose.material3.DrawerValue
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.NavItem
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 import kotlinx.coroutines.CoroutineScope
@@ -41,21 +45,20 @@ fun tabBar(
 
     Row(
         modifier =
-            Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .shadow(1.dp)
-                .padding(horizontal = 16.dp),
+        Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+            .padding(horizontal = 16.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         items.forEach { item ->
             Column(
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally, // Centrar horizontalmente
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Spacer(modifier = Modifier.height(2.dp))
 
-                // Agregar la línea encima del ícono
+
                 val isSelected =
                     if (drawerState.isOpen) {
                         item.route == NavItem.MyProfile.route
@@ -64,10 +67,10 @@ fun tabBar(
                     }
                 Box(
                     modifier =
-                        Modifier
-                            .width(60.dp)
-                            .height(4.dp)
-                            .background(if (isSelected) Green800 else Color.Transparent),
+                    Modifier
+                        .width(60.dp)
+                        .height(4.dp)
+                        .background(if (isSelected) Green800 else Color.Transparent),
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -99,4 +102,12 @@ fun tabBar(
             }
         }
     }
+}
+
+@Preview (showBackground = true)
+@Composable
+fun tabBarPreview() {
+    val navControlle = rememberNavController()
+    val coroutineScope = rememberCoroutineScope()
+    tabBar(navControlle, "", DrawerState(DrawerValue.Closed), coroutineScope)
 }

@@ -14,6 +14,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.Navigation
@@ -44,7 +46,9 @@ fun MainScaffold(
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .background(MaterialTheme.colorScheme.primary),
+                            .background(MaterialTheme.colorScheme.background)
+
+                    ,
                 ) {
                     topBarCustom(currentRoute)
                 }
@@ -56,7 +60,8 @@ fun MainScaffold(
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .background(MaterialTheme.colorScheme.primary),
+                            .background(MaterialTheme.colorScheme.background)
+                            .shadow(1.dp),
                 ) {
                     tabBar(
                         navController = navController,
