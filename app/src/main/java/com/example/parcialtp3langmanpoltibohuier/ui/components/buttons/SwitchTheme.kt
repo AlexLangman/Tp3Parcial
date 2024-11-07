@@ -61,8 +61,7 @@ fun SwitchThemeComponent(themeViewModel: ThemeViewModel = viewModel()) {
                     width = 1.dp,
                     color = Color.Gray,
                     shape = RoundedCornerShape(5.dp),
-                )
-                .padding(5.dp),
+                ).padding(5.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {

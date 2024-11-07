@@ -1,7 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -38,15 +37,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.focus.focusModifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.ui.components.checkbox.checkbox
-import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconTopLogin
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconWaynimovil
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.singIn.getIconEmoji1
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.singIn.getIconEmoji2
@@ -58,7 +53,6 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.TextInput
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray100
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.manropeFontFamily
@@ -74,10 +68,10 @@ fun LogInScreen(navController: NavHostController) {
 
     Column(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .background(Green800),
-        horizontalAlignment = Alignment.CenterHorizontally
+            Modifier
+                .fillMaxSize()
+                .background(Green800),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         HeaderSection()
 
@@ -89,7 +83,6 @@ fun LogInScreen(navController: NavHostController) {
         }
     }
 }
-
 
 @Composable
 fun HeaderSection() {
@@ -109,12 +102,13 @@ fun HeaderSection() {
     }
 
     Column(
-        modifier = Modifier
-            .width(288.dp)
-            .background(Green800)
-            .size(288.dp),
+        modifier =
+            Modifier
+                .width(288.dp)
+                .background(Green800)
+                .size(288.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Image(
             painter = getIconWaynimovil(),
@@ -126,70 +120,76 @@ fun HeaderSection() {
             horizontalAlignment = Alignment.Start,
         ) {
             Row(
-                modifier = Modifier
-                    .width(262.dp)
-                    .height(56.dp),
+                modifier =
+                    Modifier
+                        .width(262.dp)
+                        .height(56.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(
-                    modifier = Modifier
-                        .size(196.dp)
-                        .alpha(text1Alpha)
-                        .align(Alignment.CenterVertically),
+                    modifier =
+                        Modifier
+                            .size(196.dp)
+                            .alpha(text1Alpha)
+                            .align(Alignment.CenterVertically),
                 ) {
                     Row(
                         modifier = Modifier.width(50.dp),
-                        horizontalArrangement = Arrangement.End
-
-                    ){
+                        horizontalArrangement = Arrangement.End,
+                    ) {
                         Image(
                             painter = getIconTrianguloDialogo(),
-                            contentDescription = "Triangulo de Dialogo"
+                            contentDescription = "Triangulo de Dialogo",
                         )
                     }
 
                     Image(
                         painter = getIconTexto1(),
                         contentDescription = "UNA BILLETERA",
-                        modifier = Modifier
-                            .offset(y = (-8).dp)
+                        modifier =
+                            Modifier
+                                .offset(y = (-8).dp),
                     )
                 }
                 Image(
                     painter = getIconEmoji1(),
                     contentDescription = "Emoji feliz",
-                    modifier = Modifier
-                        .offset(x = emoji1OffsetX)
-                        .size(56.dp)
+                    modifier =
+                        Modifier
+                            .offset(x = emoji1OffsetX)
+                            .size(56.dp),
                 )
             }
 
             Spacer(modifier = Modifier.height(4.dp))
 
             Row(
-                modifier = Modifier
-                    .width(288.dp)
-                    .height(37.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier =
+                    Modifier
+                        .width(288.dp)
+                        .height(37.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Image(
                     painter = getIconEmoji2(),
                     contentDescription = "Emoji manos",
-                    modifier = Modifier
-                        .offset(x = emoji2OffsetX)
-                        .size(56.dp)
+                    modifier =
+                        Modifier
+                            .offset(x = emoji2OffsetX)
+                            .size(56.dp),
                 )
 
                 Box(
-                    modifier = Modifier
-                        .size(228.dp)
-                        .alpha(text2Alpha)
-                        .align(Alignment.CenterVertically)
+                    modifier =
+                        Modifier
+                            .size(228.dp)
+                            .alpha(text2Alpha)
+                            .align(Alignment.CenterVertically),
                 ) {
                     Image(
                         painter = getIconTexto2(),
-                        contentDescription = "SIMPLE PARA VOS"
+                        contentDescription = "SIMPLE PARA VOS",
                     )
                 }
             }
@@ -197,21 +197,23 @@ fun HeaderSection() {
     }
 }
 
-
-
 @Composable
 fun FormSection(navController: NavHostController) {
     val viewModel: LogInViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
     var checkedState by remember { mutableIntStateOf(0) }
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .clip(RoundedCornerShape(12.dp, 12.dp))
-        .background(Gray100),
+    Box(
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(12.dp, 12.dp))
+                .background(Gray100),
     ) {
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
@@ -266,9 +268,9 @@ fun FormSection(navController: NavHostController) {
             Button(
                 onClick = { viewModel.onLoginClick(navController) },
                 modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(48.dp),
+                    Modifier
+                        .fillMaxWidth()
+                        .height(48.dp),
                 colors =
                     ButtonDefaults.buttonColors(
                         containerColor = Purple900,
@@ -280,4 +282,3 @@ fun FormSection(navController: NavHostController) {
         }
     }
 }
-
