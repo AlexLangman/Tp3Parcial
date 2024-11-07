@@ -36,7 +36,7 @@ fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel
 
     Scaffold(
         topBar = {
-            if (currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN && currentRoute != AppRoutes.HOME) {
+            if (mainViewModel.drawerState.isClosed && currentRoute != AppRoutes.SPLASH && currentRoute != AppRoutes.LOG_IN && currentRoute != AppRoutes.HOME) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
