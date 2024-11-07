@@ -15,10 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.bigServiceCard
-import com.example.parcialtp3langmanpoltibohuier.ui.components.dialogs.cargarSubeBox
-import com.example.parcialtp3langmanpoltibohuier.ui.components.dialogs.cargarSubeConfirmacion
+import com.example.parcialtp3langmanpoltibohuier.ui.components.popUps.cargarSubeBox
+import com.example.parcialtp3langmanpoltibohuier.ui.components.popUps.cargarSubeConfirmacion
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconDirectTv
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPagoServicio
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
