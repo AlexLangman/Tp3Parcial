@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -76,9 +77,9 @@ fun HomeScreen(navController: NavHostController) {
     }
     Column(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(16.dp),
+        Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
@@ -96,41 +97,47 @@ fun HomeScreen(navController: NavHostController) {
             modifier = Modifier.fillMaxWidth(),
         )
         Spacer(modifier = Modifier.height(16.dp))
+        LazyColumn(
 
-        GetCreditCard(
-            cardNumber = if (showInfo.value) creditCardNumber else creditCardNumberDefault,
-            expirationDate = if (showInfo.value) expirationDate else expirationDateDefault,
-        )
+        ) {
+        item {
+                GetCreditCard(
+                    cardNumber = if (showInfo.value) creditCardNumber else creditCardNumberDefault,
+                    expirationDate = if (showInfo.value) expirationDate else expirationDateDefault,
+                )
 
-        Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
-        ShowDataEye(onShowInfo = { showInfo.value = !showInfo.value })
+                ShowDataEye(onShowInfo = { showInfo.value = !showInfo.value })
 
-        Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-        Text(
-            text = "SALDO DISPONIBLE",
-            style = MaterialTheme.typography.labelMedium,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        Text(
-            text = "$1.322,78",
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontSize = 44.sp,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
+                Text(
+                    text = "SALDO DISPONIBLE",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
+                Text(
+                    text = "$1.322,78",
+                    style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.padding(bottom = 16.dp),
+                    fontSize = 44.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
 
-        Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
-        ExpiringFeeWarning()
+                ExpiringFeeWarning()
 
-        Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
-        ActionGrid()
+                ActionGrid()
+                Spacer(modifier = Modifier.height(8.dp))
+            }
+        }
     }
 }
 
@@ -138,12 +145,12 @@ fun HomeScreen(navController: NavHostController) {
 fun ExpiringFeeWarning() {
     Box(
         modifier =
-            Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
-                .background(Red900) // Color de fondo
-                .padding(horizontal = 8.dp), // Espaciado interno
+        Modifier
+            .fillMaxWidth()
+            .height(48.dp)
+            .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
+            .background(Red900) // Color de fondo
+            .padding(horizontal = 8.dp), // Espaciado interno
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
@@ -177,9 +184,9 @@ fun ExpiringFeeWarning() {
                 painter = painterResource(id = R.drawable.next_arrow),
                 contentDescription = "Arrow",
                 modifier =
-                    Modifier
-                        .size(16.dp)
-                        .padding(end = 4.dp), // Espaciado final
+                Modifier
+                    .size(16.dp)
+                    .padding(end = 4.dp), // Espaciado final
             )
         }
     }
