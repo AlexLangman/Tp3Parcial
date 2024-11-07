@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3langmanpoltibohuier.R
+import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconLogoWaynimovil
 
 @Composable
 fun CardContent(
@@ -39,10 +40,10 @@ fun CardContent(
 ) {
     Box(
         modifier =
-            Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .width(336.dp)
-                .height(212.dp),
+        Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .width(336.dp)
+            .height(212.dp),
         contentAlignment = Alignment.Center, // Center the content
     ) {
         // Fondo y diseño de tarjeta
@@ -129,7 +130,7 @@ fun GetCreditCard(
         CardContent(
             backgroundImage = painterResource(id = R.drawable.img_credit_p2),
             overlayImage = painterResource(id = R.drawable.img_credit_p1),
-            brand = painterResource(id = R.drawable.waynimovil),
+            brand = getIconLogoWaynimovil(),
             cardNumber = cardNumber,
             expirationDate = expirationDate,
         )
