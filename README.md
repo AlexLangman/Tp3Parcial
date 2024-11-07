@@ -59,7 +59,7 @@ Waynimóvil está lanzando su primera aplicación pública para Android, una bil
 - **Luca Polti**
 - **Martin Bikiel**
 - **Martin Bouhier**
-- **Alan**
+- **Alan Ades**
 
 ## Licencia
 
