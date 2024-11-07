@@ -76,7 +76,7 @@ fun MainScaffold(
                     modifier =
                         Modifier
                             .padding(innerPadding)
-                            .background(MaterialTheme.colorScheme.primary),
+                            .background(MaterialTheme.colorScheme.background),
                 ) {
                     MyProfileRoutes(
                         navController = navController,
