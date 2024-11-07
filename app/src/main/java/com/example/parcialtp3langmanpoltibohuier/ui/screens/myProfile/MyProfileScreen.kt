@@ -1,6 +1,7 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -24,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -111,6 +113,8 @@ fun ProfileHeader(isLoading: Boolean, userInfo: UserDataClass?) {
 
 @Composable
 fun ProfileOptions(navController: NavHostController, mainViewModel: MainViewModel, coroutineScope: CoroutineScope) {
+    val context = LocalContext.current
+
     data class ButtonInfo(
         var title: String,
         var description: String,
@@ -118,9 +122,12 @@ fun ProfileOptions(navController: NavHostController, mainViewModel: MainViewMode
         var buttonColor: Color,
         var isLast: Boolean = false,
         var isFirst: Boolean = false,
-        var action: () -> Unit = {}
-
+        var action: () -> Unit = {Toast.makeText(context, title, Toast.LENGTH_SHORT).show()}
     )
+
+
+
+
     val buttonsInfo = listOf(
         ButtonInfo("Mis datos", "", Icons.Filled.ArrowForward, Green800, isFirst = true),
         ButtonInfo("Mi CVU", "", Icons.Filled.ArrowForward, Green800),
