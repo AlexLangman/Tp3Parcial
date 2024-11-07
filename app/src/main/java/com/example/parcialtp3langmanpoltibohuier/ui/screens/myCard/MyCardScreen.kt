@@ -1,5 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +23,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.buildAnnotatedString
@@ -50,6 +52,8 @@ const val MOD_ID = "modIcon"
 fun MyCardScreen(navController: NavHostController) {
     val showInfo = remember { mutableStateOf(true) }
 
+    val context = LocalContext.current
+
     data class ButtonInfo(
         var title: String,
         var description: String,
@@ -57,6 +61,7 @@ fun MyCardScreen(navController: NavHostController) {
         var buttonColor: Color,
         var isFirst: Boolean = false,
         var isLast: Boolean = false,
+        var action: () -> Unit = { Toast.makeText(context, title, Toast.LENGTH_SHORT).show() }
     )
 
     val buttonsInfo =
@@ -190,6 +195,7 @@ fun MyCardScreen(navController: NavHostController) {
                                     iconBackgrounColor = it.buttonColor,
                                     isLast = it.isLast,
                                     isFirst = it.isFirst,
+                                    action = it.action
                                 )
                             }
                         }

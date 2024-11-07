@@ -11,15 +11,6 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
     val drawerState = DrawerState(initialValue = DrawerValue.Closed)
 
-    private val _isDialogOpen = mutableStateOf(false)
-    val isDialogOpen: State<Boolean> get() = _isDialogOpen
-
-    private val _isDrawerOpen = mutableStateOf(false)
-    val isDrawerOpen: State<Boolean> get() = _isDrawerOpen
-
-    fun toggleDialog() {
-        _isDialogOpen.value = !_isDialogOpen.value
-    }
 
     fun toggleDrawer(
         scope: CoroutineScope,
