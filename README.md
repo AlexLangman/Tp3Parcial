@@ -8,6 +8,9 @@ Waynimóvil está lanzando su primera aplicación pública para Android, una bil
 
 ![Captura 1](screenshoot-app.png)
 
+## Status: 🚧 In progress 🚧
+Waynimóvil está en desarrollo y algunas pantallas cuentan con componentes no implementados.
+
 ## Características
 
 - **Perfil del usuario**: Gestión de la información personal del usuario.
