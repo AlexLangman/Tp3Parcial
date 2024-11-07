@@ -8,8 +8,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+const val ERROR_GETTING_INFO = "Error getting user info"
+
 class HomeViewModel : ViewModel() {
-    private val ERROR_GETTING_INFO = "Error getting user info"
     private val retrofitService = RetrofitServiceFactory.makeRetrofitService()
 
     private val _userInfo = MutableStateFlow<UserDataClass?>(null)

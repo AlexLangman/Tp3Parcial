@@ -37,18 +37,18 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Yellow900
 
+const val TEXT1 = "TARJETA VIRTUAL"
+const val TEXT2 = "TARJETA FISICA"
+const val INFO = "¿Sabias que podes pedir una tarjeta Mastercad fisica para utilizar directamente en los negocios que vos elijas?"
+const val CREDIT_CARD_NUMBER_DEFAULT = "**** **** **** ****"
+const val CREDIT_CARD_NUMBER = "4957 **** **** 5824"
+const val EXPIRATION_DATE_DEFAULT = "**/**"
+const val EXPIRATION_DATE = "05/23"
+const val MOD_ID = "modIcon"
+
 @Composable
 fun MyCardScreen(navController: NavHostController) {
-    val TEXT1 = "TARJETA VIRTUAL"
-    val TEXT2 = "TARJETA FISICA"
-    val INFO = "¿Sabias que podes pedir una tarjeta Mastercad fisica para utilizar directamente en los negocios que vos elijas?"
-
-    val SHOW_INFO = remember { mutableStateOf(true) }
-
-    var CREDIT_CARD_NUMBER_DEFAULT = "**** **** **** ****"
-    var CREDIT_CARD_NUMBER = "4957 **** **** 5824"
-    var EXPIRATION_DATE_DEFAULT = "**/**"
-    var EXPIRATION_DATE = "05/23"
+    val showInfo = remember { mutableStateOf(true) }
 
     data class ButtonInfo(
         var title: String,
@@ -77,16 +77,15 @@ fun MyCardScreen(navController: NavHostController) {
             ),
         )
 
-    val modId = "modIcon"
-    val FINAL_INFO =
+    val finalInfo =
         buildAnnotatedString {
-            appendInlineContent(modId, "[icon]")
+            appendInlineContent(MOD_ID, "[icon]")
             append(INFO)
         }
     val inlineContent =
         mapOf(
             Pair(
-                modId,
+                MOD_ID,
                 InlineTextContent(
                     Placeholder(
                         width = 20.sp,
@@ -122,10 +121,10 @@ fun MyCardScreen(navController: NavHostController) {
                                 .padding(start = 18.dp),
                     )
                     GetCreditCard(
-                        cardNumber = if (SHOW_INFO.value) CREDIT_CARD_NUMBER else CREDIT_CARD_NUMBER_DEFAULT,
-                        expirationDate = if (SHOW_INFO.value) EXPIRATION_DATE else EXPIRATION_DATE_DEFAULT,
+                        cardNumber = if (showInfo.value) CREDIT_CARD_NUMBER else CREDIT_CARD_NUMBER_DEFAULT,
+                        expirationDate = if (showInfo.value) EXPIRATION_DATE else EXPIRATION_DATE_DEFAULT,
                     )
-                    ShowDataEye(onShowInfo = { SHOW_INFO.value = !SHOW_INFO.value })
+                    ShowDataEye(onShowInfo = { showInfo.value = !showInfo.value })
                 }
             }
         }
@@ -155,7 +154,7 @@ fun MyCardScreen(navController: NavHostController) {
             Box {
                 Column {
                     Text(
-                        text = FINAL_INFO,
+                        text = finalInfo,
                         inlineContent = inlineContent,
                         color = Gray900,
                         modifier =
