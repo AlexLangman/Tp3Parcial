@@ -30,7 +30,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -65,7 +64,7 @@ fun MyCardScreen(navController: NavHostController) {
         var buttonColor: Color,
         var isFirst: Boolean = false,
         var isLast: Boolean = false,
-        var action: () -> Unit = { Toast.makeText(context, title, Toast.LENGTH_SHORT).show() }
+        var action: () -> Unit = { Toast.makeText(context, title, Toast.LENGTH_SHORT).show() },
     )
 
     val buttonsInfo =
@@ -86,12 +85,14 @@ fun MyCardScreen(navController: NavHostController) {
             ),
         )
 
-    val finalInfo = buildAnnotatedString {
+    val finalInfo =
+        buildAnnotatedString {
             appendInlineContent(MOD_ID, "[icon]")
             append(INFO)
         }
 
-    val inlineContent = mapOf(
+    val inlineContent =
+        mapOf(
             Pair(
                 MOD_ID,
                 InlineTextContent(
@@ -102,8 +103,8 @@ fun MyCardScreen(navController: NavHostController) {
                     ),
                 ) {
                     Icon(Icons.Filled.Lightbulb, contentDescription = null, tint = Yellow900, modifier = Modifier.fillMaxSize())
-                }
-            )
+                },
+            ),
         )
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -131,7 +132,9 @@ fun MyCardScreen(navController: NavHostController) {
         }
         // Linea separadora
         item {
-            Box(modifier = Modifier
+            Box(
+                modifier =
+                    Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
                         .drawBehind
@@ -147,7 +150,7 @@ fun MyCardScreen(navController: NavHostController) {
                                 // Termina en la parte inferior derecha
                                 strokeWidth = 2f, // Grosor del subrayado
                             )
-                        }
+                        },
             )
         }
         item {
@@ -191,7 +194,7 @@ fun MyCardScreen(navController: NavHostController) {
                                     iconBackgrounColor = it.buttonColor,
                                     isLast = it.isLast,
                                     isFirst = it.isFirst,
-                                    action = it.action
+                                    action = it.action,
                                 )
                             }
                         }

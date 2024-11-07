@@ -26,7 +26,6 @@ import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconWaynimovil
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green900
 import kotlinx.coroutines.delay
 
 @Composable

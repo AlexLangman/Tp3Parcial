@@ -176,11 +176,12 @@ fun closeSession(
         coroutineScope,
         mainViewModel.drawerState,
     )
-    navController.navigate(AppRoutes.LOG_IN){
+    navController.navigate(AppRoutes.LOG_IN) {
         popUpTo(0) { inclusive = true }
     }
 }
-@Preview (showBackground = true)
+
+@Preview(showBackground = true)
 @Composable
 fun ProfileHeaderPreview() {
     val navController = rememberNavController()

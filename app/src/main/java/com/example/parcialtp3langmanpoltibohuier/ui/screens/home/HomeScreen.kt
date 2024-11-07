@@ -77,9 +77,9 @@ fun HomeScreen(navController: NavHostController) {
     }
     Column(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
@@ -98,7 +98,7 @@ fun HomeScreen(navController: NavHostController) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-        item {
+            item {
                 GetCreditCard(
                     cardNumber = if (showInfo.value) creditCardNumber else creditCardNumberDefault,
                     expirationDate = if (showInfo.value) expirationDate else expirationDateDefault,
@@ -143,12 +143,12 @@ fun HomeScreen(navController: NavHostController) {
 fun ExpiringFeeWarning() {
     Box(
         modifier =
-        Modifier
-            .fillMaxWidth()
-            .height(48.dp)
-            .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
-            .background(Red900) // Color de fondo
-            .padding(horizontal = 8.dp), // Espaciado interno
+            Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+                .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
+                .background(Red900) // Color de fondo
+                .padding(horizontal = 8.dp), // Espaciado interno
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
@@ -182,9 +182,9 @@ fun ExpiringFeeWarning() {
                 painter = painterResource(id = R.drawable.next_arrow),
                 contentDescription = "Arrow",
                 modifier =
-                Modifier
-                    .size(16.dp)
-                    .padding(end = 4.dp), // Espaciado final
+                    Modifier
+                        .size(16.dp)
+                        .padding(end = 4.dp), // Espaciado final
             )
         }
     }

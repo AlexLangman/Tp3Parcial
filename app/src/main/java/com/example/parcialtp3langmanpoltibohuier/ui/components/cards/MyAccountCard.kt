@@ -99,9 +99,10 @@ fun MyAccountCard() {
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.clickable {
-                        clipboardManager.setText(AnnotatedString(CVU_NUMBER))
-                    }
+                    modifier =
+                        Modifier.clickable {
+                            clipboardManager.setText(AnnotatedString(CVU_NUMBER))
+                        },
                 )
             }
         }

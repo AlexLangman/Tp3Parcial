@@ -79,9 +79,12 @@ fun MyAccountScreen() {
         }
 
         if (payments != null && payments!!.isNotEmpty()) {
-            LazyColumn(modifier = Modifier
-                .fillMaxWidth()
-                .background(color = MaterialTheme.colorScheme.primary)) {
+            LazyColumn(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .background(color = MaterialTheme.colorScheme.primary),
+            ) {
                 val transactions: List<Transaction> =
                     payments!![0].transactions.credit_card_transactions +
                         payments!![0].transactions.bank_account_transactions

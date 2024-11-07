@@ -40,10 +40,10 @@ fun CardContent(
 ) {
     Box(
         modifier =
-        Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .width(336.dp)
-            .height(212.dp),
+            Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .width(336.dp)
+                .height(212.dp),
         contentAlignment = Alignment.Center, // Center the content
     ) {
         // Fondo y diseño de tarjeta
