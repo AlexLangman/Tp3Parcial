@@ -59,6 +59,7 @@ fun textInput(
                 unfocusedIndicatorColor = border,
                 focusedTextColor = Black,
                 unfocusedTextColor = Black,
+                cursorColor = Black,
             ),
     )
 
