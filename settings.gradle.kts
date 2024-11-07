@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "ParcialTP3LangmanPoltiBohuier"
 include(":app")
- 
