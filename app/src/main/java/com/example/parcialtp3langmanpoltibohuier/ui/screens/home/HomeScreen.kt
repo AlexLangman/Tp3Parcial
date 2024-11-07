@@ -84,10 +84,10 @@ fun HomeScreen(navController: NavHostController) {
     ) {
         Text(
             text = if (!isLoading && userInfo != null) ("👋 Hola " + userInfo!!.name.firstname) else "Cargando usuario...",
-            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+            style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onBackground,
             textAlign = TextAlign.Start,
             modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.onBackground,
         )
         Text(
             text = "Último acceso: Mar 01, 2020 4:55 PM",
@@ -97,9 +97,7 @@ fun HomeScreen(navController: NavHostController) {
             modifier = Modifier.fillMaxWidth(),
         )
         Spacer(modifier = Modifier.height(16.dp))
-        LazyColumn(
-
-        ) {
+        LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         item {
                 GetCreditCard(
                     cardNumber = if (showInfo.value) creditCardNumber else creditCardNumberDefault,

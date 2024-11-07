@@ -32,7 +32,7 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
 @Composable
-fun passwordInput(
+fun PasswordInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
