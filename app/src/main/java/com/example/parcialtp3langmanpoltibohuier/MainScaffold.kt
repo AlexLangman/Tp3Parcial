@@ -23,16 +23,14 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
 import com.example.parcialtp3langmanpoltibohuier.ui.components.topBar.topBarCustom
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
+import kotlinx.coroutines.CoroutineScope
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel) {
-    val coroutineScope = rememberCoroutineScope()
+fun MainScaffold(navController: NavHostController, mainViewModel : MainViewModel, currentRoute: String, coroutineScope: CoroutineScope) {
 
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route ?: AppRoutes.HOME
 
     Scaffold(
         topBar = {
