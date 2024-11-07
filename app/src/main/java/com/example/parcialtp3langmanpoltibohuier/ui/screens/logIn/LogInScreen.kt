@@ -53,8 +53,8 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.singIn.getI
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.singIn.getIconTexto1
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.singIn.getIconTexto2
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.singIn.getIconTrianguloDialogo
-import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.passwordInput
-import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.textInput
+import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.PasswordInput
+import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.TextInput
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray100
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
@@ -204,23 +204,11 @@ fun FormSection(navController: NavHostController) {
     val viewModel: LogInViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
     var checkedState by remember { mutableIntStateOf(0) }
-
-    Box(
-        modifier =
-        Modifier
-            .fillMaxSize()
-            .clip(RoundedCornerShape(12.dp, 12.dp))
-            .background(Gray100),
     Box(modifier = Modifier
         .fillMaxSize()
         .clip(RoundedCornerShape(12.dp, 12.dp))
         .background(Gray100),
     ) {
-        Column(
-            modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
         Column(modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
