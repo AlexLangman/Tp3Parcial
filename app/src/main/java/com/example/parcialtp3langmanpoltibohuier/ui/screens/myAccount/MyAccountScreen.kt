@@ -40,12 +40,13 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconTransferencia
 
+const val SUBTITLE = "MOVIMIENTOS"
+const val LOADING = "Cargando transacciones..."
+
 @Composable
 fun MyAccountScreen() {
     val viewModel: MyAccountViewModel = viewModel()
     val payments by viewModel.payments.observeAsState(emptyList())
-    val SUBTITLE = "MOVIMIENTOS"
-    val LOADING = "Cargando transacciones..."
 
     // Llama a fetchPayments() una vez cuando el Composable se lanza
     LaunchedEffect(Unit) {
