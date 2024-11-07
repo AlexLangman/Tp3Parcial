@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.MainViewModel
 import com.example.parcialtp3langmanpoltibohuier.Navigation
+import com.example.parcialtp3langmanpoltibohuier.ui.components.drawer.CustomDrawerRightToLeft
 import com.example.parcialtp3langmanpoltibohuier.ui.components.tabBar.tabBar
 import com.example.parcialtp3langmanpoltibohuier.ui.components.topBar.topBarCustom
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
@@ -68,9 +69,8 @@ fun MainScaffold(
         },
         modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars),
     ) { innerPadding ->
-        ModalNavigationDrawer(
+        CustomDrawerRightToLeft(
             drawerState = mainViewModel.drawerState,
-            gesturesEnabled = mainViewModel.drawerState.isOpen,
             drawerContent = {
                 Box(
                     modifier =
