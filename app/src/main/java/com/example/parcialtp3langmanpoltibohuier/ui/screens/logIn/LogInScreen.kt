@@ -5,9 +5,22 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -27,7 +40,12 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.checkbox.checkbox
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconTopLogin
 import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.passwordInput
 import com.example.parcialtp3langmanpoltibohuier.ui.components.inputs.textInput
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.*
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Black
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray100
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.manropeFontFamily
 
 @Composable
 fun LogInScreen(navController: NavHostController) {

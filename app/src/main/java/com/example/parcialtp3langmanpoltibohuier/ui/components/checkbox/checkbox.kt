@@ -21,7 +21,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3langmanpoltibohuier.R
-import com.example.parcialtp3langmanpoltibohuier.ui.theme.*
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Gray500
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green100
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
+import com.example.parcialtp3langmanpoltibohuier.ui.theme.Purple900
 
 @Composable
 fun checkbox(
