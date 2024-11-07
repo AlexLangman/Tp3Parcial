@@ -52,6 +52,7 @@ fun cargarSubeBox(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -90,11 +91,13 @@ fun boxSube() {
         Text(
             text = "Tarjeta Nº: 6061 3580 2384 9041",
             style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground,
         )
         HorizontalDivider(Modifier.padding(vertical = 16.dp))
         Text(
             text = "$ 200,00",
             style = MaterialTheme.typography.displaySmall,
+            color = MaterialTheme.colorScheme.onBackground,
         )
     }
 }

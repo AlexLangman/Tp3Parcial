@@ -1,5 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.home
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -50,7 +52,10 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconPrestamos
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaCelu
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconRecargaSube
+import com.example.parcialtp3langmanpoltibohuier.ui.components.popUps.cargarSubeBox
+import com.example.parcialtp3langmanpoltibohuier.ui.components.popUps.cargarSubeConfirmacion
 import com.example.parcialtp3langmanpoltibohuier.ui.components.showData.ShowDataEye
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentViewModel
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
@@ -182,6 +187,10 @@ fun ExpiringFeeWarning() {
 
 @Composable
 fun ActionGrid() {
+    val servicePaymentViewModel: ServicePaymentViewModel = viewModel()
+    val isMainDialogOpen by servicePaymentViewModel.isMainDialogOpen
+    val isConfirmationDialogOpen by servicePaymentViewModel.isConfirmationDialogOpen
+    val context = LocalContext.current
     Card(
         modifier =
             Modifier
@@ -199,11 +208,17 @@ fun ActionGrid() {
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
+                ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO", onClick = {
+                    Toast.makeText(context, "CARGAR DINERO", Toast.LENGTH_SHORT).show()
+                })
                 CustomVerticalDivider()
-                ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
+                ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO", onClick = {
+                    Toast.makeText(context, "EXTRAER DINER", Toast.LENGTH_SHORT).show()
+                })
                 CustomVerticalDivider()
-                ServiceCard(icon = getIconPrestamos(), label = "SEGUIR MIS PRESTAMOS")
+                ServiceCard(icon = getIconPrestamos(), label = "SEGUIR MIS PRESTAMOS", onClick = {
+                    Toast.makeText(context, "SEGUIR MIS PRESTAMOS", Toast.LENGTH_SHORT).show()
+                })
             }
             CustomHorizontalDivider()
             Row(
@@ -211,12 +226,28 @@ fun ActionGrid() {
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                ServiceCard(icon = getIconRecargaSube(), label = "RECARGA SUBE")
+                ServiceCard(icon = getIconRecargaSube(), label = "RECARGA SUBE", onClick = { servicePaymentViewModel.openMainDialog() })
                 CustomVerticalDivider()
-                ServiceCard(icon = getIconRecargaCelu(), label = "RECARGA CELU")
+                ServiceCard(icon = getIconRecargaCelu(), label = "RECARGA CELU", onClick = {
+                    Toast.makeText(context, "RECARGA CELU", Toast.LENGTH_SHORT).show()
+                })
                 CustomVerticalDivider()
-                ServiceCard(icon = getIconPagoServicio(), label = "PAGAR SERVICIO")
+                ServiceCard(icon = getIconPagoServicio(), label = "PAGAR SERVICIO", onClick = {
+                    Toast.makeText(context, "PAGAR SERVICIO", Toast.LENGTH_SHORT).show()
+                })
             }
+        }
+        if (isMainDialogOpen) {
+            cargarSubeBox(
+                onDismiss = { servicePaymentViewModel.closeMainDialog() },
+                onContinue = { servicePaymentViewModel.openConfirmationDialog() },
+            )
+        }
+
+        if (isConfirmationDialogOpen) {
+            cargarSubeConfirmacion(
+                onDismiss = { servicePaymentViewModel.closeConfirmationDialog() },
+            )
         }
     }
 }

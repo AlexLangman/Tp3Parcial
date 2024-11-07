@@ -76,7 +76,7 @@ fun arrowButton(
                 description?.let {
                     Text(
                         text = it, // Debe ser un String
-                        color = MaterialTheme.colorScheme.outline, // Debe ser un Color
+                        color = MaterialTheme.colorScheme.onBackground, // Debe ser un Color
                         fontSize = 10.sp, // Debe ser un TextUnit, que generalmente se especifica como sp
                     )
                 }

@@ -116,11 +116,15 @@ fun MenuIntermedio() {
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
+                ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO", onClick = {})
                 CustomVerticalDivider()
-                ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO")
+                ServiceCard(icon = getIconExtraerDinero(), label = "EXTRAER DINERO", onClick = {})
                 CustomVerticalDivider()
-                ServiceCard(icon = getIconTransferencia(), label = "TRANSFERIR DINERO")
+                ServiceCard(
+                    icon = getIconTransferencia(),
+                    label = "TRANSFERIR DINERO",
+                    onClick = {},
+                )
             }
         }
     }

@@ -89,6 +89,7 @@ fun passwordInput(
                 unfocusedIndicatorColor = border,
                 focusedTextColor = Black,
                 unfocusedTextColor = Black,
+                cursorColor = Black,
             ),
     )
     if (isError && errorMessage != null) {
