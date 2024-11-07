@@ -5,8 +5,6 @@ import androidx.navigation.NavHostController
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardScreen
 
 @Composable
-fun MyCardRoute(
-    navController: NavHostController
-){
+fun MyCardRoute(navController: NavHostController) {
     MyCardScreen(navController = navController)
 }

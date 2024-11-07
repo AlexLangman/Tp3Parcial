@@ -7,7 +7,7 @@ import com.example.parcialtp3langmanpoltibohuier.dataClasses.Payment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 
-class MyAccountViewModel: ViewModel() {
+class MyAccountViewModel : ViewModel() {
     val payments = MutableLiveData<List<Payment>>()
     private val firebaseFirestore = FirebaseFirestore.getInstance()
     private val paymentsCollection = firebaseFirestore.collection("payments")

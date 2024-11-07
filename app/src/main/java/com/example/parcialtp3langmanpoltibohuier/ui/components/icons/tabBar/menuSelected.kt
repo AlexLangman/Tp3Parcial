@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconMenuSelected(): Painter {
-    return painterResource(id = R.drawable.menu_1)
-}
+fun getIconMenuSelected(): Painter = painterResource(id = R.drawable.menu_1)

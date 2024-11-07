@@ -10,25 +10,24 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
-
 interface RetrofitService {
-
     @GET("users/{userId}")
     suspend fun getUserById(
-        @Path("userId") userId: Int
+        @Path("userId") userId: Int,
     ): UserDataClass
 
     @POST("auth/login")
     suspend fun login(
-        @Body loginRequest: LoginRequest
+        @Body loginRequest: LoginRequest,
     ): LoginDataClass
 }
 
 object RetrofitServiceFactory {
-    fun makeRetrofitService(): RetrofitService {
-        return Retrofit.Builder()
+    fun makeRetrofitService(): RetrofitService =
+        Retrofit
+            .Builder()
             .baseUrl("https://fakestoreapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create(RetrofitService::class.java)
-    }
+            .build()
+            .create(RetrofitService::class.java)
 }

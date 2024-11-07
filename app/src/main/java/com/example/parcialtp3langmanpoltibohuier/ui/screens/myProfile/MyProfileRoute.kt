@@ -9,8 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 fun MyProfileRoutes(
     navController: NavHostController,
     mainViewModel: MainViewModel,
-    coroutineScope: CoroutineScope
-
-){
+    coroutineScope: CoroutineScope,
+) {
     MyProfileScreen(navController = navController, mainViewModel, coroutineScope)
 }

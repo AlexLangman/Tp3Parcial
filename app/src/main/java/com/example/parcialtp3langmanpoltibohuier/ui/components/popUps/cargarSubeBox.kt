@@ -3,7 +3,6 @@ package com.example.parcialtp3langmanpoltibohuier.ui.components.popUps
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -28,25 +26,27 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.buttons.customBut
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.others.getIconSube
 
 @Composable
-fun cargarSubeBox(onDismiss: () -> Unit, onContinue: () -> Unit){
+fun cargarSubeBox(
+    onDismiss: () -> Unit,
+    onContinue: () -> Unit,
+) {
     Popup(
         onDismissRequest = onDismiss,
-    )
-    {
-        Column (
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .fillMaxSize(),
-
-        ){
+    ) {
+        Column(
+            modifier =
+                Modifier
+                    .background(MaterialTheme.colorScheme.background)
+                    .fillMaxSize(),
+        ) {
             topBarDialog(onDismiss)
             Spacer(modifier = Modifier.height(48.dp))
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .padding(16.dp)
-            ){
-
+                modifier =
+                    Modifier
+                        .padding(16.dp),
+            ) {
                 Text(
                     text = "Verificá que la información sea correcta:",
                     fontSize = 18.sp,
@@ -61,29 +61,25 @@ fun cargarSubeBox(onDismiss: () -> Unit, onContinue: () -> Unit){
                 Spacer(modifier = Modifier.weight(1f))
 
                 customButton(
-                    onClick = onContinue ,
-                    text = "Continuar"
+                    onClick = onContinue,
+                    text = "Continuar",
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }
-
-
         }
     }
-
 }
 
-
-
 @Composable
-fun boxSube(){
-    Column (
-        modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .shadow(1.dp)
-            .border(1.dp, MaterialTheme.colorScheme.outline)/*TODO: color borde*/,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
+fun boxSube() {
+    Column(
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .shadow(1.dp)
+                .border(1.dp, MaterialTheme.colorScheme.outline),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Image(
@@ -98,10 +94,8 @@ fun boxSube(){
         HorizontalDivider(Modifier.padding(vertical = 16.dp))
         Text(
             text = "$ 200,00",
-            style = MaterialTheme.typography.displaySmall
+            style = MaterialTheme.typography.displaySmall,
         )
-
-
     }
 }
 

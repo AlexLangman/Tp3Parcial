@@ -4,8 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun SplashRoute(
-    navController: NavHostController
-){
+fun SplashRoute(navController: NavHostController) {
     SplashScreen(navController = navController)
 }

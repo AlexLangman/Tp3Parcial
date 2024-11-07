@@ -28,71 +28,73 @@ fun passwordInput(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     isError: Boolean,
-    errorMessage: String? = null
+    errorMessage: String? = null,
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
 
-    var border = if(isError) Red900 else Gray500
+    var border = if (isError) Red900 else Gray500
 
-        OutlinedTextField(
-            value = value,
-            onValueChange = onValueChange,
-            modifier = modifier
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier =
+            modifier
                 .fillMaxWidth(),
-            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-            trailingIcon = {
-                if (isError) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "!",
-                            color = Red900,
-                            style = MaterialTheme.typography.headlineMedium
-                        )
-                        val image =
-                            if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                            Icon(imageVector = image, contentDescription = null, tint = Gray500)
-                        }
-                    }
-                } else {
-                    val image = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+        trailingIcon = {
+            if (isError) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = "!",
+                        color = Red900,
+                        style = MaterialTheme.typography.headlineMedium,
+                    )
+                    val image =
+                        if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(imageVector = image, contentDescription = null, tint = Gray500)
                     }
                 }
-            },
-            label = {
-                Text(
-                    text = "Contraseña",
-                    color = if (value.isEmpty()) Black else Purple900,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Start
-                )
-            },
-            colors = TextFieldDefaults.colors(
+            } else {
+                val image = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                    Icon(imageVector = image, contentDescription = null, tint = Gray500)
+                }
+            }
+        },
+        label = {
+            Text(
+                text = "Contraseña",
+                color = if (value.isEmpty()) Black else Purple900,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Start,
+            )
+        },
+        colors =
+            TextFieldDefaults.colors(
                 focusedContainerColor = White,
                 unfocusedContainerColor = White,
                 focusedIndicatorColor = Purple900,
                 unfocusedIndicatorColor = border,
                 focusedTextColor = Black,
-                unfocusedTextColor = Black
-            )
-        )
-        if (isError && errorMessage != null) {
-            Column(
-                modifier = modifier.fillMaxWidth()
-
-            ) {
-                Text(
-                    text = errorMessage,
-                    color = Red900,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier
+                unfocusedTextColor = Black,
+            ),
+    )
+    if (isError && errorMessage != null) {
+        Column(
+            modifier = modifier.fillMaxWidth(),
+        ) {
+            Text(
+                text = errorMessage,
+                color = Red900,
+                style = MaterialTheme.typography.bodyMedium,
+                modifier =
+                    Modifier
                         .padding(top = 4.dp, start = 12.dp)
-                        .align(Alignment.Start)
-                )
-            }
+                        .align(Alignment.Start),
+            )
         }
     }
+}

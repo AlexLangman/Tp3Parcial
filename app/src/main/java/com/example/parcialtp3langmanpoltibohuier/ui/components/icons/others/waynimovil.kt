@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconWaynimovil() : Painter {
-    return painterResource(id = R.drawable.waynimovil)
-}
+fun getIconWaynimovil(): Painter = painterResource(id = R.drawable.waynimovil)

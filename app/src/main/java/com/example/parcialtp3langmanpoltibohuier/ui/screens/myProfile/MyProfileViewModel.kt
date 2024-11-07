@@ -1,10 +1,7 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.parcialtp3langmanpoltibohuier.dataClasses.LoginDataClass
-import com.example.parcialtp3langmanpoltibohuier.dataClasses.LoginRequest
 import com.example.parcialtp3langmanpoltibohuier.dataClasses.UserDataClass
 import com.example.parcialtp3langmanpoltibohuier.helpers.retrofit.RetrofitServiceFactory
 import kotlinx.coroutines.flow.MutableStateFlow

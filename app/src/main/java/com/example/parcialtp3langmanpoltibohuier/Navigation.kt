@@ -11,14 +11,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.logIn.LogInRoute
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.splash.SplashRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myAccount.MyAccountRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard.MyCardRoute
 import com.example.parcialtp3langmanpoltibohuier.ui.screens.myProfile.MyProfileRoutes
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment.ServicePaymentRoute
+import com.example.parcialtp3langmanpoltibohuier.ui.screens.splash.SplashRoute
 import kotlinx.coroutines.CoroutineScope
-
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -26,14 +25,15 @@ import kotlinx.coroutines.CoroutineScope
 fun Navigation(
     navController: NavHostController,
     mainViewModel: MainViewModel,
-    coroutineScope: CoroutineScope
+    coroutineScope: CoroutineScope,
 ) {
     NavHost(
         navController = navController,
         startDestination = AppRoutes.SPLASH,
-        modifier = Modifier
-            .fillMaxSize())
-    {
+        modifier =
+            Modifier
+                .fillMaxSize(),
+    ) {
         composable(AppRoutes.SPLASH) {
             SplashRoute(navController)
         }
@@ -56,5 +56,4 @@ fun Navigation(
             MyProfileRoutes(navController, mainViewModel, coroutineScope)
         }
     }
-
 }

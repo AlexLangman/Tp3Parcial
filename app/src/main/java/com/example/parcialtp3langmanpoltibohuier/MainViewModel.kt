@@ -21,7 +21,10 @@ class MainViewModel : ViewModel() {
         _isDialogOpen.value = !_isDialogOpen.value
     }
 
-    fun toggleDrawer(scope: CoroutineScope, drawerState: DrawerState) {
+    fun toggleDrawer(
+        scope: CoroutineScope,
+        drawerState: DrawerState,
+    ) {
         scope.launch {
             if (drawerState.isClosed) {
                 drawerState.open()

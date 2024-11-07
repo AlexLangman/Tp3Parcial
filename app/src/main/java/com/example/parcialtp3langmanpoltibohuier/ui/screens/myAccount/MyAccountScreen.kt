@@ -32,14 +32,13 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCard
+import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
-import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomVerticalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconExtraerDinero
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconTransferencia
-
 
 @Composable
 fun MyAccountScreen() {
@@ -55,44 +54,41 @@ fun MyAccountScreen() {
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         MyAccountCard()
         Spacer(modifier = Modifier.height(28.dp))
         MenuIntermedio()
         Spacer(modifier = Modifier.height(10.dp))
 
-
         Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.onBackground)
-                .padding(horizontal = 16.dp, vertical = 10.dp),
-            contentAlignment = Alignment.TopStart
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.onBackground)
+                    .padding(horizontal = 16.dp, vertical = 10.dp),
+            contentAlignment = Alignment.TopStart,
         ) {
             Text(
                 text = SUBTITLE,
                 color = MaterialTheme.colorScheme.primary,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Medium
+                fontWeight = FontWeight.Medium,
             )
         }
 
-        if (payments != null && payments!!.isNotEmpty()){
-
-
-            LazyColumn(modifier = Modifier.fillMaxWidth().background(color= MaterialTheme.colorScheme.primary)) {
+        if (payments != null && payments!!.isNotEmpty()) {
+            LazyColumn(modifier = Modifier.fillMaxWidth().background(color = MaterialTheme.colorScheme.primary)) {
                 val transactions: List<Transaction> =
                     payments!![0].transactions.credit_card_transactions +
-                            payments!![0].transactions.bank_account_transactions
+                        payments!![0].transactions.bank_account_transactions
 
                 items(transactions) { item ->
                     TransactionCard(item)
                     CustomHorizontalDivider()
                 }
             }
-        }
-        else {
+        } else {
             Text(text = LOADING)
         }
     }
@@ -101,24 +97,23 @@ fun MyAccountScreen() {
 @Composable
 fun MenuIntermedio() {
     Card(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 16.dp)
-            .border(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.outline,
-                shape = RoundedCornerShape(8.dp)
-            )
-            .shadow(3.dp, RoundedCornerShape(8.dp)),
+        modifier =
+            Modifier
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 16.dp)
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline,
+                    shape = RoundedCornerShape(8.dp),
+                ).shadow(3.dp, RoundedCornerShape(8.dp)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(4.dp)
+        elevation = CardDefaults.cardElevation(4.dp),
     ) {
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
-
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
                 CustomVerticalDivider()

@@ -3,11 +3,10 @@ package com.example.parcialtp3langmanpoltibohuier.ui.screens.home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,12 +19,13 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3langmanpoltibohuier.R
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.GetCreditCard
@@ -42,7 +42,6 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.showData.ShowData
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Red900
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.White
 
-
 @Composable
 fun HomeScreen(navController: NavHostController) {
     val viewModel: HomeViewModel = viewModel()
@@ -58,31 +57,32 @@ fun HomeScreen(navController: NavHostController) {
     LaunchedEffect(Unit) {
         viewModel.getUserById(1) // Traemos la info del usuario 1
     }
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Column(
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             text = if (!isLoading && userInfo != null) ("👋 Hola " + userInfo!!.name.firstname) else "Cargando usuario...",
             style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
             textAlign = TextAlign.Start,
             modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
         )
         Text(
             text = "Último acceso: Mar 01, 2020 4:55 PM",
             style = MaterialTheme.typography.bodySmall,
             fontWeight = FontWeight.Normal,
             color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
         Spacer(modifier = Modifier.height(16.dp))
 
         GetCreditCard(
             cardNumber = if (showInfo.value) creditCardNumber else creditCardNumberDefault,
-            expirationDate = if (showInfo.value) expirationDate else expirationDateDefault
+            expirationDate = if (showInfo.value) expirationDate else expirationDateDefault,
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -96,7 +96,7 @@ fun HomeScreen(navController: NavHostController) {
             style = MaterialTheme.typography.labelMedium,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
         )
         Text(
             text = "$1.322,78",
@@ -104,7 +104,7 @@ fun HomeScreen(navController: NavHostController) {
             modifier = Modifier.padding(bottom = 16.dp),
             fontSize = 44.sp,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -120,46 +120,49 @@ fun HomeScreen(navController: NavHostController) {
 @Composable
 fun ExpiringFeeWarning() {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp)
-            .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
-            .background(Red900) // Color de fondo
-            .padding(horizontal = 8.dp) // Espaciado interno
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+                .clip(RoundedCornerShape(8.dp)) // Clip para redondear el fondo
+                .background(Red900) // Color de fondo
+                .padding(horizontal = 8.dp), // Espaciado interno
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically, // Asegura que el contenido esté centrado verticalmente
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Column(
-                modifier = Modifier
-                    .padding(start = 12.dp,end = 12.dp), // Espaciado alrededor del contenido
+                modifier =
+                    Modifier
+                        .padding(start = 12.dp, end = 12.dp),
+                // Espaciado alrededor del contenido
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start
+                horizontalAlignment = Alignment.Start,
             ) {
                 Text(
                     text = "La cuota de tu préstamo está próxima a vencer.",
                     fontSize = 12.sp,
-                    color = White
+                    color = White,
                 )
                 Text(
                     text = "Ver préstamo",
                     style = TextStyle(textDecoration = TextDecoration.Underline),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium,
-                    color = White
+                    color = White,
                 )
-
             }
             // Espaciador que empuja la imagen hacia la derecha
             Spacer(modifier = Modifier.weight(1f))
             Image(
                 painter = painterResource(id = R.drawable.next_arrow),
                 contentDescription = "Arrow",
-                modifier = Modifier
-                    .size(16.dp)
-                    .padding(end = 4.dp) // Espaciado final
+                modifier =
+                    Modifier
+                        .size(16.dp)
+                        .padding(end = 4.dp), // Espaciado final
             )
         }
     }
@@ -168,22 +171,21 @@ fun ExpiringFeeWarning() {
 @Composable
 fun ActionGrid() {
     Card(
-        modifier = Modifier
-            .border(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.outline,
-                shape = RoundedCornerShape(8.dp)
-            )
-            .shadow(3.dp, RoundedCornerShape(8.dp))
-        ,
+        modifier =
+            Modifier
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline,
+                    shape = RoundedCornerShape(8.dp),
+                ).shadow(3.dp, RoundedCornerShape(8.dp)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
-        elevation = CardDefaults.cardElevation(0.dp)
+        elevation = CardDefaults.cardElevation(0.dp),
     ) {
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 ServiceCard(icon = getIconCargarDinero(), label = "CARGAR DINERO")
                 CustomVerticalDivider()
@@ -195,7 +197,7 @@ fun ActionGrid() {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 ServiceCard(icon = getIconRecargaSube(), label = "RECARGA SUBE")
                 CustomVerticalDivider()
@@ -206,7 +208,6 @@ fun ActionGrid() {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconClose() : Painter {
-    return painterResource(id = R.drawable.close)
-}
+fun getIconClose(): Painter = painterResource(id = R.drawable.close)

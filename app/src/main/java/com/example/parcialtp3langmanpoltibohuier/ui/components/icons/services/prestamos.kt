@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconPrestamos(): Painter {
-    return painterResource(id = R.drawable.ic_prestamos)
-}
+fun getIconPrestamos(): Painter = painterResource(id = R.drawable.ic_prestamos)

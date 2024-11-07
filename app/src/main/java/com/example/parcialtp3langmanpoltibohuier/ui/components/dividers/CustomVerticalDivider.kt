@@ -12,6 +12,6 @@ fun CustomVerticalDivider() {
     VerticalDivider(
         thickness = 1.dp,
         modifier = Modifier.height(96.dp),
-        color = Gray500
+        color = Gray500,
     )
 }

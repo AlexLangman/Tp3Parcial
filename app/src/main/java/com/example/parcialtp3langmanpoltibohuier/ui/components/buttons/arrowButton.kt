@@ -20,17 +20,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
-import com.example.parcialtp3langmanpoltibohuier.ui.screens.home.HomeScreen
-
 
 @Composable
 fun arrowButton(
@@ -42,39 +39,40 @@ fun arrowButton(
     isLast: Boolean = false,
     isOnlyOne: Boolean = false,
     action: () -> Unit = {
-
-    }
+    },
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primary)
-            .border(
-                width = 1.dp, // Ancho del borde
-                color = Color.Gray, // Color del borde. TODO: Definir color
-                shape = when {
-                    isFirst -> RoundedCornerShape(topStart = 5.dp, topEnd = 5.dp)
-                    isLast -> RoundedCornerShape(bottomStart = 5.dp, bottomEnd = 5.dp)
-                    isOnlyOne -> RoundedCornerShape(5.dp)
-                    else -> RoundedCornerShape(0.dp)
-                } // Borde redondeado
-            )
-            .padding(5.dp)
-            .clickable(onClick = action),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.primary)
+                .border(
+                    width = 1.dp, // Ancho del borde
+                    color = Color.Gray, // Color del borde. TODO: Definir color
+                    shape =
+                        when {
+                            isFirst -> RoundedCornerShape(topStart = 5.dp, topEnd = 5.dp)
+                            isLast -> RoundedCornerShape(bottomStart = 5.dp, bottomEnd = 5.dp)
+                            isOnlyOne -> RoundedCornerShape(5.dp)
+                            else -> RoundedCornerShape(0.dp)
+                        }, // Borde redondeado
+                ).padding(5.dp)
+                .clickable(onClick = action),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .height(56.dp)
+            modifier =
+                Modifier
+                    .height(56.dp),
         ) {
             Text(
                 text = text,
                 color = MaterialTheme.colorScheme.onBackground, // Cambia el color de la letra a negro
-                fontWeight = FontWeight.Bold // Cambia la letra a negrita
+                fontWeight = FontWeight.Bold, // Cambia la letra a negrita
             )
-            if(description != "" ) {
+            if (description != "") {
                 description?.let {
                     Text(
                         text = it, // Debe ser un String
@@ -85,17 +83,19 @@ fun arrowButton(
             }
         }
         Box(
-            modifier = Modifier
-                .size(20.dp) // Tamaño del círculo
-                .clip(CircleShape) // Forma circular
-                .background(iconBackgrounColor), // Fondo verde
-            contentAlignment = Alignment.Center
+            modifier =
+                Modifier
+                    .size(20.dp) // Tamaño del círculo
+                    .clip(CircleShape) // Forma circular
+                    .background(iconBackgrounColor),
+            // Fondo verde
+            contentAlignment = Alignment.Center,
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary, // Cambia el color del ícono a blanco
-                modifier = Modifier.size(24.dp) // Tamaño del ícono dentro del círculo
+                modifier = Modifier.size(24.dp), // Tamaño del ícono dentro del círculo
             )
         }
     }
@@ -111,6 +111,6 @@ fun ArrowButtonPreview() {
         iconBackgrounColor = MaterialTheme.colorScheme.primary,
         isFirst = true,
         isLast = false,
-        isOnlyOne = false
+        isOnlyOne = false,
     )
 }

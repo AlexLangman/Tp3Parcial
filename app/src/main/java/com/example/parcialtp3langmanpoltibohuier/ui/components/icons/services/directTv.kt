@@ -6,6 +6,4 @@ import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3langmanpoltibohuier.R
 
 @Composable
-fun getIconDirectTv(): Painter {
-    return painterResource(id = R.drawable.ic_direct_tv)
-}
+fun getIconDirectTv(): Painter = painterResource(id = R.drawable.ic_direct_tv)

@@ -11,12 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,43 +27,43 @@ import com.example.parcialtp3langmanpoltibohuier.ui.theme.*
 fun checkbox(
     checkedState: Int, // 0: sin seleccionar, 1: seleccionado, 2: seleccionado con verificación
     onCheckedChange: (Int) -> Unit,
-    label: String
+    label: String,
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
+        horizontalArrangement = Arrangement.Start,
     ) {
         Box(
-            modifier = Modifier
-                .size(24.dp)
-                .background(
-                    color = if (checkedState == 2) Green100 else Color.Transparent,
-                    shape = CircleShape
-                )
-                .border(
-                    width = 1.dp,
-                    color = if (checkedState == 2) Green800 else Gray500,
-                    shape = CircleShape
-                )
-                .clickable {
-                    val newState = if (checkedState == 0 || checkedState == 1) 2 else 0
-                    onCheckedChange(newState)
-                },
-            contentAlignment = Alignment.Center
+            modifier =
+                Modifier
+                    .size(24.dp)
+                    .background(
+                        color = if (checkedState == 2) Green100 else Color.Transparent,
+                        shape = CircleShape,
+                    ).border(
+                        width = 1.dp,
+                        color = if (checkedState == 2) Green800 else Gray500,
+                        shape = CircleShape,
+                    ).clickable {
+                        val newState = if (checkedState == 0 || checkedState == 1) 2 else 0
+                        onCheckedChange(newState)
+                    },
+            contentAlignment = Alignment.Center,
         ) {
             if (checkedState == 2) {
                 Icon(
                     painter = painterResource(id = R.drawable.vector),
                     contentDescription = "Check",
                     tint = Green800,
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(16.dp),
                 )
             } else if (checkedState == 1) {
                 Box(
-                    modifier = Modifier
-                        .size(10.dp)
-                        .background(Purple900, CircleShape)
+                    modifier =
+                        Modifier
+                            .size(10.dp)
+                            .background(Purple900, CircleShape),
                 )
             }
         }
@@ -76,7 +72,7 @@ fun checkbox(
         Text(
             text = label,
             style = MaterialTheme.typography.bodyMedium,
-            color = Color(0xFF241846)
+            color = Color(0xFF241846),
         )
     }
 }

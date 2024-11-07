@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,13 +38,12 @@ import com.example.parcialtp3langmanpoltibohuier.ui.navigation.AppRoutes
 import com.example.parcialtp3langmanpoltibohuier.ui.theme.Green800
 import kotlinx.coroutines.CoroutineScope
 
-
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun MyProfileScreen(
     navController: NavHostController,
     mainViewModel: MainViewModel,
-    coroutineScope: CoroutineScope
+    coroutineScope: CoroutineScope,
 ) {
     val viewModel: MyProfileViewModel = viewModel()
     val isLoading by viewModel.loading.collectAsState()
@@ -54,13 +52,14 @@ fun MyProfileScreen(
     LaunchedEffect(Unit) {
         viewModel.getUserById(1)
     }
-    Column(){
+    Column {
         Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp)
-                .background(MaterialTheme.colorScheme.background),
-            contentAlignment = Alignment.Center
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(64.dp)
+                    .background(MaterialTheme.colorScheme.background),
+            contentAlignment = Alignment.Center,
         ) {
             Text(
                 "Mi Perfil",
@@ -69,17 +68,18 @@ fun MyProfileScreen(
             )
         }
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             item {
                 ProfileHeader(isLoading = isLoading, userInfo = userInfo)
                 Spacer(modifier = Modifier.height(32.dp))
                 ProfileOptions(navController, mainViewModel, coroutineScope)
                 Spacer(modifier = Modifier.height(64.dp))
-                //DarkModeButton()
+                // DarkModeButton()
                 SwitchThemeComponent()
             }
         }
@@ -87,14 +87,17 @@ fun MyProfileScreen(
 }
 
 @Composable
-fun ProfileHeader(isLoading: Boolean, userInfo: UserDataClass?) {
+fun ProfileHeader(
+    isLoading: Boolean,
+    userInfo: UserDataClass?,
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
             painter = painterResource(R.drawable.profileimage),
-            contentDescription = "imagen de perfil"
+            contentDescription = "imagen de perfil",
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -102,8 +105,8 @@ fun ProfileHeader(isLoading: Boolean, userInfo: UserDataClass?) {
         if (!isLoading && userInfo != null) {
             Text(
                 "\uD83D\uDC4B Hola " +
-                        userInfo!!.name.firstname + " " +
-                        userInfo!!.name.lastname
+                    userInfo!!.name.firstname + " " +
+                    userInfo!!.name.lastname,
             )
         } else {
             Text(text = "Cargando nombre...")
@@ -112,7 +115,11 @@ fun ProfileHeader(isLoading: Boolean, userInfo: UserDataClass?) {
 }
 
 @Composable
-fun ProfileOptions(navController: NavHostController, mainViewModel: MainViewModel, coroutineScope: CoroutineScope) {
+fun ProfileOptions(
+    navController: NavHostController,
+    mainViewModel: MainViewModel,
+    coroutineScope: CoroutineScope,
+) {
     val context = LocalContext.current
 
     data class ButtonInfo(
@@ -122,24 +129,24 @@ fun ProfileOptions(navController: NavHostController, mainViewModel: MainViewMode
         var buttonColor: Color,
         var isLast: Boolean = false,
         var isFirst: Boolean = false,
-        var action: () -> Unit = {Toast.makeText(context, title, Toast.LENGTH_SHORT).show()}
+        var action: () -> Unit = { Toast.makeText(context, title, Toast.LENGTH_SHORT).show() },
     )
 
-
-
-
-    val buttonsInfo = listOf(
-        ButtonInfo("Mis datos", "", Icons.Filled.ArrowForward, Green800, isFirst = true),
-        ButtonInfo("Mi CVU", "", Icons.Filled.ArrowForward, Green800),
-        ButtonInfo("Configuración", "", Icons.Filled.ArrowForward, Green800),
-        ButtonInfo("Ayuda", "", Icons.Filled.ArrowForward, Green800),
-        ButtonInfo("Términos y condiciones", "", Icons.Filled.ArrowForward, Green800),
-        ButtonInfo("Cerrar sesión", "", Icons.Filled.ArrowForward, Green800, isLast = true, action={closeSession(
-            navController,
-            mainViewModel,
-            coroutineScope
-        )})
-    )
+    val buttonsInfo =
+        listOf(
+            ButtonInfo("Mis datos", "", Icons.Filled.ArrowForward, Green800, isFirst = true),
+            ButtonInfo("Mi CVU", "", Icons.Filled.ArrowForward, Green800),
+            ButtonInfo("Configuración", "", Icons.Filled.ArrowForward, Green800),
+            ButtonInfo("Ayuda", "", Icons.Filled.ArrowForward, Green800),
+            ButtonInfo("Términos y condiciones", "", Icons.Filled.ArrowForward, Green800),
+            ButtonInfo("Cerrar sesión", "", Icons.Filled.ArrowForward, Green800, isLast = true, action = {
+                closeSession(
+                    navController,
+                    mainViewModel,
+                    coroutineScope,
+                )
+            }),
+        )
 
     Column {
         buttonsInfo.forEach { button ->
@@ -150,17 +157,20 @@ fun ProfileOptions(navController: NavHostController, mainViewModel: MainViewMode
                 iconBackgrounColor = button.buttonColor,
                 isFirst = button.isFirst,
                 isLast = button.isLast,
-                action = button.action
+                action = button.action,
             )
         }
-
     }
 }
 
-fun closeSession(navController: NavHostController, mainViewModel: MainViewModel, coroutineScope: CoroutineScope) {
+fun closeSession(
+    navController: NavHostController,
+    mainViewModel: MainViewModel,
+    coroutineScope: CoroutineScope,
+) {
     mainViewModel.toggleDrawer(
         coroutineScope,
-        mainViewModel.drawerState
+        mainViewModel.drawerState,
     )
     navController.navigate(AppRoutes.LOG_IN)
 }
