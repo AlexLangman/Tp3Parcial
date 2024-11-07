@@ -1,5 +1,6 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.screens.servicePayment
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -36,7 +38,7 @@ fun ServicePaymentScreen(navController: NavHostController) {
     val servicePaymentViewModel: ServicePaymentViewModel = viewModel()
     val isMainDialogOpen by servicePaymentViewModel.isMainDialogOpen
     val isConfirmationDialogOpen by servicePaymentViewModel.isConfirmationDialogOpen
-
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -52,9 +54,10 @@ fun ServicePaymentScreen(navController: NavHostController) {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
 
         ) {
+
             items(services) { (icon, label) ->
                 if(label != "RECARGA SUBE"){
-                    bigServiceCard(icon = icon, label = label)
+                    bigServiceCard(icon = icon, label = label, onClick = { Toast.makeText(context, label, Toast.LENGTH_SHORT).show()})
                 }else{
                     bigServiceCard(icon = icon, label = label, onClick = { servicePaymentViewModel.openMainDialog() })
                 }
