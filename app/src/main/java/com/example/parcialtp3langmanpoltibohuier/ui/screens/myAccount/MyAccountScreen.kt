@@ -33,7 +33,6 @@ import com.example.parcialtp3langmanpoltibohuier.dataClasses.Transaction
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.MyAccountCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.TransactionCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomHorizontalDivider
-import com.example.parcialtp3langmanpoltibohuier.ui.components.samples.sampleTransactions
 import com.example.parcialtp3langmanpoltibohuier.ui.components.cards.ServiceCard
 import com.example.parcialtp3langmanpoltibohuier.ui.components.dividers.CustomVerticalDivider
 import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.getIconCargarDinero
@@ -85,9 +84,7 @@ fun MyAccountScreen() {
                 val transactions: List<Transaction> =
                     payments!![0].transactions.credit_card_transactions +
                             payments!![0].transactions.bank_account_transactions
-                            
 
-                // val transactions = sampleTransactions
                 items(transactions) { item ->
                     TransactionCard(item)
                     CustomHorizontalDivider()
