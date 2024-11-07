@@ -211,12 +211,19 @@ fun FormSection(navController: NavHostController) {
             .fillMaxSize()
             .clip(RoundedCornerShape(12.dp, 12.dp))
             .background(Gray100),
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .clip(RoundedCornerShape(12.dp, 12.dp))
+        .background(Gray100),
     ) {
         Column(
             modifier =
             Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
@@ -228,7 +235,7 @@ fun FormSection(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            textInput(
+            TextInput(
                 value = uiState.username,
                 onValueChange = { viewModel.onUsernameChange(it) },
                 label = "DNI o E-mail",
@@ -239,7 +246,7 @@ fun FormSection(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            passwordInput(
+            PasswordInput(
                 value = uiState.password,
                 onValueChange = { viewModel.onPasswordChange(it) },
                 modifier = Modifier.fillMaxWidth(),

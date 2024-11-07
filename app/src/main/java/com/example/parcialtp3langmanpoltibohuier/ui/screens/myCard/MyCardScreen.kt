@@ -2,9 +2,11 @@ package com.example.parcialtp3langmanpoltibohuier.ui.screens.myCard
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
@@ -12,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -25,6 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,13 +81,12 @@ fun MyCardScreen(navController: NavHostController) {
             ),
         )
 
-    val finalInfo =
-        buildAnnotatedString {
+    val finalInfo = buildAnnotatedString {
             appendInlineContent(MOD_ID, "[icon]")
             append(INFO)
         }
-    val inlineContent =
-        mapOf(
+
+    val inlineContent = mapOf(
             Pair(
                 MOD_ID,
                 InlineTextContent(
@@ -94,48 +97,40 @@ fun MyCardScreen(navController: NavHostController) {
                     ),
                 ) {
                     Icon(Icons.Filled.Lightbulb, contentDescription = null, tint = Yellow900, modifier = Modifier.fillMaxSize())
-                },
-            ),
+                }
+            )
         )
 
-    LazyColumn(
-        modifier =
-            Modifier
-                .fillMaxSize(),
-    ) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
-            Box(
-                modifier =
-                    Modifier
-                        .fillMaxWidth(),
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
+            Box(modifier = Modifier.fillMaxWidth()) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
                         text = TEXT1,
-                        color = Gray900,
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onBackground,
                         modifier =
                             Modifier
-                                .fillMaxWidth() // Ocupa todo el ancho disponible
+                                .fillMaxWidth()
                                 .padding(start = 18.dp),
                     )
+                    Spacer(modifier = Modifier.size(16.dp))
                     GetCreditCard(
                         cardNumber = if (showInfo.value) CREDIT_CARD_NUMBER else CREDIT_CARD_NUMBER_DEFAULT,
                         expirationDate = if (showInfo.value) EXPIRATION_DATE else EXPIRATION_DATE_DEFAULT,
                     )
+                    Spacer(modifier = Modifier.size(8.dp))
                     ShowDataEye(onShowInfo = { showInfo.value = !showInfo.value })
                 }
             }
         }
         // Linea separadora
         item {
-            Box(
-                modifier =
-                    Modifier
+            Box(modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
-                        .drawBehind {
+                        .drawBehind
+                        {
                             drawLine(
                                 color = Gray900, // Cambia el color del subrayado
                                 start = Offset(0f, size.height), // Comienza en la parte inferior izquierda
@@ -147,7 +142,7 @@ fun MyCardScreen(navController: NavHostController) {
                                 // Termina en la parte inferior derecha
                                 strokeWidth = 2f, // Grosor del subrayado
                             )
-                        },
+                        }
             )
         }
         item {
@@ -156,7 +151,7 @@ fun MyCardScreen(navController: NavHostController) {
                     Text(
                         text = finalInfo,
                         inlineContent = inlineContent,
-                        color = Gray900,
+                        color = MaterialTheme.colorScheme.onBackground,
                         modifier =
                             Modifier
                                 .fillMaxWidth() // Ocupa todo el ancho disponible
@@ -164,7 +159,8 @@ fun MyCardScreen(navController: NavHostController) {
                     )
                     Text(
                         text = TEXT2,
-                        color = Gray900,
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onBackground,
                         modifier =
                             Modifier
                                 .fillMaxWidth() // Ocupa todo el ancho disponible
