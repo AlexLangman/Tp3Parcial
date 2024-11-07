@@ -44,9 +44,10 @@ fun cargarSubeConfirmacion(onDismiss: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Verificá que la información sea correcta:",
+                    text = "Tu operación se ha realizado con éxito",
                     style = MaterialTheme.typography.headlineMedium,
                     textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 customButton(

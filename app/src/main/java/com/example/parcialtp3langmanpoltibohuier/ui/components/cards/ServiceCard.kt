@@ -1,6 +1,7 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.components.cards
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,9 +26,10 @@ import com.example.parcialtp3langmanpoltibohuier.ui.components.icons.services.ge
 fun ServiceCard(
     icon: Painter,
     label: String,
+    onClick: () -> Unit,
 ) {
     Card(
-        modifier = Modifier.size(112.dp, 96.dp),
+        modifier = Modifier.size(112.dp, 96.dp).clickable(onClick = onClick),
         colors =
             CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface,
@@ -72,6 +74,7 @@ fun ServiceCardPreview() {
         ServiceCard(
             icon = getIconCargarDinero(),
             label = "CARGAR DINERO",
+            onClick = {},
         )
     }
 }
