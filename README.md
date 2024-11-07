@@ -4,6 +4,10 @@
 
 Waynimóvil está lanzando su primera aplicación pública para Android, una billetera digital fintech. Esta aplicación permitirá a los usuarios gestionar su perfil, información de tarjeta, transacciones y cuenta digital, así como configurar el modo claro/oscuro y cargar la Tarjeta Sube.
 
+## Capturas
+
+![Captura 1](screenshoot-app.png)
+
 ## Características
 
 - **Perfil del usuario**: Gestión de la información personal del usuario.
