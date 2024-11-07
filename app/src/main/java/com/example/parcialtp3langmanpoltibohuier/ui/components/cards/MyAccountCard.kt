@@ -1,9 +1,11 @@
 package com.example.parcialtp3langmanpoltibohuier.ui.components.cards
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,8 +39,10 @@ private val BORDER_RADIUS = 8.dp
 private val CARD_ELEVATION = 4.dp
 private val TXT_GAP = 16.dp
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MyAccountCard() {
+    val clipboardManager = LocalClipboardManager.current
     Card(
         modifier =
             Modifier
@@ -71,7 +77,7 @@ fun MyAccountCard() {
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = GAP))
 
-            Row(
+            FlowRow(
                 modifier = Modifier.padding(top = TXT_GAP),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
@@ -93,6 +99,9 @@ fun MyAccountCard() {
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.clickable {
+                        clipboardManager.setText(AnnotatedString(CVU_NUMBER))
+                    }
                 )
             }
         }
