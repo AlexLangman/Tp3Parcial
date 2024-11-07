@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -61,7 +62,7 @@ fun MyAccountScreen() {
         MenuIntermedio()
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Titulo de franja oscura
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -78,7 +79,7 @@ fun MyAccountScreen() {
         }
 
         if (payments != null && payments!!.isNotEmpty()){
-            // Listado de movimientos
+
 
             LazyColumn(modifier = Modifier.fillMaxWidth().background(color= MaterialTheme.colorScheme.primary)) {
                 val transactions: List<Transaction> =
@@ -107,7 +108,8 @@ fun MenuIntermedio() {
                 width = 1.dp,
                 color = MaterialTheme.colorScheme.outline,
                 shape = RoundedCornerShape(8.dp)
-            ),
+            )
+            .shadow(3.dp, RoundedCornerShape(8.dp)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {

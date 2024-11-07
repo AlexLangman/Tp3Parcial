@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
@@ -47,7 +48,9 @@ fun MyAccountCard() {
                 width = BORDER_WIDTH,
                 color = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(BORDER_RADIUS)
-            ),
+            )
+            .shadow(3.dp, RoundedCornerShape(BORDER_RADIUS))
+        ,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(CARD_ELEVATION)
     ) {
